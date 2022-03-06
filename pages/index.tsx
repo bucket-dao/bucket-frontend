@@ -34,8 +34,13 @@ const Home: NextPage = () => {
         <span></span>
       </div>
       <div className={`foreground `}>
-        
-        <div className="max-w-lg my-16 mx-auto w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">hello</div>
+        <div className="max-w-lg my-16 shadow-lg border border-black mx-auto w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">
+          hello
+        </div>
+        <div className="max-w-lg my-16 shadow-lg  mx-auto w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">
+          hello
+        </div>
+       
       </div>
     </div>
   );
