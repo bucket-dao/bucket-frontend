@@ -1,9 +1,37 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import FrostCard from "../components/FrostCard";
+import Navbar from "../components/Navbar";
 
 const Home: NextPage = () => {
+  const infiniteLoopContent = (
+    <>
+      <span>USDC</span>
+      <span>USDT</span>
+      <span>UST</span>
+      {/* <span className=" border border-black rounded-xl p-2 mx-2">
+        EOS<b>2.44</b>
+      </span>
+      <span className=" border border-black rounded-xl p-2 mx-2">
+        USDT<b>1.01</b>
+      </span> */}
+      {/* <span>
+        LTC<b>32.61</b>
+      </span>
+      <span>
+        XLM<b>0.10</b>
+      </span>
+      <span>
+        TRX<b>0.03</b>
+      </span>
+      <span>
+        BSV<b>74.29</b>
+      </span>
+      <span>
+        ADA<b>0.04</b>
+      </span> */}
+    </>
+  );
   return (
     <div>
       <Head>
@@ -33,14 +61,52 @@ const Home: NextPage = () => {
         <span></span>
         <span></span>
       </div>
-      <div className={`foreground `}>
-        <div className="max-w-lg my-16 shadow-lg border border-black mx-auto w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">
-          hello
+      <div className={`foreground`}>
+        <Navbar />
+        <div className="max-w-7xl mx-auto">
+          <div className="font-bold text-7xl text-center mt-16">
+            <h1>Composable Stablecoin</h1>
+          </div>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Bucket facilitates the aggregation of stablecoins.
+          </div>
+          <FrostCard className="max-w-lg my-16 mx-auto">hello</FrostCard>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Stablecoins aim to uphold three primary value propositions: capital
+            efficiency, decentralization and stability -{" "}
+            <span className="text-black">the stablecoin trilemma</span>
+          </div>
+          <FrostCard noPadding={true} className="max-w-lg my-16 mx-auto py-2">
+            <div className="max-w-2xl mx-auto relative marquee-container block">
+              <div className="marquee flex justify-around">
+                {infiniteLoopContent}
+              </div>
+              <div className="marquee marquee2 flex justify-around">
+                {infiniteLoopContent}
+              </div>
+            </div>
+          </FrostCard>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Stablecoins aim to uphold three primary value propositions: capital
+            efficiency, decentralization and stability -{" "}
+            <span className="text-black">the stablecoin trilemma</span>
+          </div>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Stablecoins aim to uphold three primary value propositions: capital
+            efficiency, decentralization and stability -{" "}
+            <span className="text-black">the stablecoin trilemma</span>
+          </div>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Stablecoins aim to uphold three primary value propositions: capital
+            efficiency, decentralization and stability -{" "}
+            <span className="text-black">the stablecoin trilemma</span>
+          </div>
+          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+            Stablecoins aim to uphold three primary value propositions: capital
+            efficiency, decentralization and stability -{" "}
+            <span className="text-black">the stablecoin trilemma</span>
+          </div>
         </div>
-        <div className="max-w-lg my-16 shadow-lg  mx-auto w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">
-          hello
-        </div>
-       
       </div>
     </div>
   );
