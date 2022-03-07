@@ -97,7 +97,7 @@ const Home: NextPage = () => {
               account instead of dozens
             </div>
           </div>
-          <div className="relative  mt-16 image-wrapper">
+          {/* <div className="relative  mt-16 image-wrapper">
             <div className="  mx-auto image-container shadow-lg rounded-xl ">
               <Image
                 src="/deposit.png"
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
                 className="rounded-xl "
               ></Image>
             </div>
-          </div>
+          </div> */}
           <div className="h-16"></div>
           <FrostCard className=" w-full my-16 text-lg">
             <div className="text-4xl font-bold">Protocol {"->"} 🪣</div>
