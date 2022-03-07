@@ -3,6 +3,7 @@ import Head from "next/head";
 import FrostCard from "../components/FrostCard";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
+import InfoSection from "../components/InfoSection";
 
 const Home: NextPage = () => {
   const infiniteLoopContent = (
@@ -47,7 +48,7 @@ const Home: NextPage = () => {
       </div>
       <div className={`foreground `}>
         <Navbar />
-        <div className="max-w-4xl mx-auto md:p-0 p-4">
+        <div className="max-w-7xl mx-auto md:p-0 p-4">
           <div className="font-bold text-5xl md:text-7xl text-center mt-16">
             <h1>Composable Stablecoin</h1>
           </div>
@@ -82,53 +83,46 @@ const Home: NextPage = () => {
           </div>
 
           <div className="h-16"></div>
-          <FrostCard className=" w-full my-16 text-md md:text-lg">
-            <div className="text-2xl md:text-4xl font-bold">
-              Protocol {"->"} 🪣
+          {infoSectionData.map((data, key) => (
+            <div key={key}>
+              <InfoSection
+                title={data.title}
+                content={data.content}
+                className={`${key != 0 && "pt-8"}`}
+              />
             </div>
-            <div className="mt-2">
-              BUCKET is an aggregation layer on top of existing stablecoins,
-              similar to a stablecoin ETF. As more stablecoins enter the
-              ecosystem, BUCKET will sit at the top of the funnel to analyze the
-              respective risks and utilities of each stablecoin and incorporate
-              them as their risks become better understood.
-            </div>
-            <div className="mt-2">
-              On top of these long-tail stablecoins, there is a range of wrapped
-              stablecoins, such as different bridged versions of UST that
-              fragment liquidity. BUCKET can incorporate them under one umbrella
-              and issue one canonical mint. Speaking to DEXs and DeFi protocols
-              across Solana, it became clear that USDC will remain the default
-              medium of exchange for a while. The lack of liquidity and
-              certainty around long-tail stablecoins prevents these protocols
-              from adding most non-custodial stablecoins.
-            </div>
-          </FrostCard>
-          <FrostCard className=" w-full my-16 text-lg">
-            <div className="text-2xl md:text-4xl font-bold">
-              Consumer {"->"} 🪣
-            </div>
-            <div className="mt-2">
-              The founders of Saber have repeatedly mentioned that Saber is an
-              infrastructure protocol, not an app. While projects like CASH have
-              enabled liquidity providers to create an LP-pegged stablecoin, we
-              propose an inverse user process. Instead of funneling LPs into a
-              reserve, we funnel the much larger base of DeFi users and
-              newcomers into becoming LPs.
-            </div>
-            <div className="mt-2">
-              Concretely, users can convert their respective stablecoins, and we
-              will generate yield automatically through means such as Liquidity
-              Provisions. This approach benefits downstream stable swap
-              protocols like Saber by providing more concentrated liquidity. It
-              also improves the upstream stablecoins{"'"} utility.
-            </div>
-          </FrostCard>
+          ))}
+
+          <div className="h-16"></div>
         </div>
       </div>
       <div className="shadow-bg false"></div>
     </div>
   );
 };
+
+const infoSectionData = [
+  {
+    title: "How it works",
+    content: [
+      "BUCKET is an aggregation layer on top of existing stablecoins, similar to a stablecoin ETF. As more stablecoins enter the ecosystem, BUCKET will sit at the top of the funnel to analyze the respective risks and utilities of each stablecoin and incorporate them as their risks become better understood.",
+      "On top of these long-tail stablecoins, there is a range of wrapped stablecoins, such as different bridged versions of UST that fragment liquidity. BUCKET can incorporate them under one umbrella and issue one canonical mint. Speaking to DEXs and DeFi protocols across Solana, it became clear that USDC will remain the default medium of exchange for a while. The lack of liquidity and certainty around long-tail stablecoins prevents these protocols from adding most non-custodial stablecoins.",
+    ],
+  },
+  {
+    title: "Protocol to Bucket",
+    content: [
+      "BUCKET is an aggregation layer on top of existing stablecoins, similar to a stablecoin ETF. As more stablecoins enter the ecosystem, BUCKET will sit at the top of the funnel to analyze the respective risks and utilities of each stablecoin and incorporate them as their risks become better understood.",
+      "On top of these long-tail stablecoins, there is a range of wrapped stablecoins, such as different bridged versions of UST that fragment liquidity. BUCKET can incorporate them under one umbrella and issue one canonical mint. Speaking to DEXs and DeFi protocols across Solana, it became clear that USDC will remain the default medium of exchange for a while. The lack of liquidity and certainty around long-tail stablecoins prevents these protocols from adding most non-custodial stablecoins.",
+    ],
+  },
+  {
+    title: "Consumer to Bucket",
+    content: [
+      "The founders of Saber have repeatedly mentioned that Saber is an infrastructure protocol, not an app. While projects like CASH have enabled liquidity providers to create an LP-pegged stablecoin, we propose an inverse user process. Instead of funneling LPs into a reserve, we funnel the much larger base of DeFi users and newcomers into becoming LPs.",
+      `Concretely, users can convert their respective stablecoins, and we will generate yield automatically through means such as Liquidity Provisions. This approach benefits downstream stable swap protocols like Saber by providing more concentrated liquidity. It also improves the upstream stablecoins${"'"} utility.`,
+    ],
+  },
+];
 
 export default Home;
