@@ -65,10 +65,10 @@ const Home: NextPage = () => {
       <div className={`foreground `}>
         <Navbar />
         <div className="max-w-4xl mx-auto md:p-0 p-4">
-          <div className="font-bold text-4xl md:text-7xl text-center mt-16">
+          <div className="font-bold text-5xl md:text-7xl text-center mt-16">
             <h1>Composable Stablecoin</h1>
           </div>
-          <div className="mt-8 text-center text-xl md:text-3xl max-w-4xl mx-auto text-gray-700">
+          <div className="mt-8 text-center text-lg md:text-3xl max-w-4xl mx-auto text-gray-700">
             Bucket facilitates the aggregation of stablecoins.
           </div>
           <FrostCard noPadding={true} className="max-w-lg my-16 mx-auto py-2">
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </FrostCard>
-          <div className="mt-8 text-center text-xl md:text-3xl  mx-auto text-gray-700">
+          <div className="mt-8 text-center text-lg md:text-3xl  mx-auto text-gray-700">
             <div>Use bucket across the defi ecosystem</div>
             <div className="mt-2">
               Maintain{" "}
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
           
           <div className="h-16"></div>
           <FrostCard className=" w-full my-16 text-md md:text-lg">
-            <div className="text-xl md:text-4xl font-bold">Protocol {"->"} 🪣</div>
+            <div className="text-2xl md:text-4xl font-bold">Protocol {"->"} 🪣</div>
             <div className="mt-2">
               BUCKET is an aggregation layer on top of existing stablecoins,
               similar to a stablecoin ETF. As more stablecoins enter the
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
             </div>
           </FrostCard>
           <FrostCard className=" w-full my-16 text-lg">
-            <div className="text-xl md:text-4xl font-bold">Consumer {"->"} 🪣</div>
+            <div className="text-2xl md:text-4xl font-bold">Consumer {"->"} 🪣</div>
             <div className="mt-2">
               The founders of Saber have repeatedly mentioned that Saber is an
               infrastructure protocol, not an app. While projects like CASH have
