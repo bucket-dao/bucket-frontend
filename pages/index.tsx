@@ -126,6 +126,7 @@ const Home: NextPage = () => {
           </FrostCard>
         </div>
       </div>
+      <div className="shadow-bg false"></div>
     </div>
   );
 };

@@ -141,3 +141,15 @@ $amount: 20;
     position: unset !important;
   }
 }
+
+.shadow-bg {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(180deg,transparent,#E0B0FF);
+  opacity: 0.5;
+  height: 150px;
+}
