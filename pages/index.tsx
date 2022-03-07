@@ -41,26 +41,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        {[...Array(20)].map((_, key) => (
+          <span key={key}></span>
+        ))}
       </div>
       <div className={`foreground `}>
         <Navbar />
@@ -97,10 +80,12 @@ const Home: NextPage = () => {
               account instead of dozens
             </div>
           </div>
-          
+
           <div className="h-16"></div>
           <FrostCard className=" w-full my-16 text-md md:text-lg">
-            <div className="text-2xl md:text-4xl font-bold">Protocol {"->"} 🪣</div>
+            <div className="text-2xl md:text-4xl font-bold">
+              Protocol {"->"} 🪣
+            </div>
             <div className="mt-2">
               BUCKET is an aggregation layer on top of existing stablecoins,
               similar to a stablecoin ETF. As more stablecoins enter the
@@ -120,7 +105,9 @@ const Home: NextPage = () => {
             </div>
           </FrostCard>
           <FrostCard className=" w-full my-16 text-lg">
-            <div className="text-2xl md:text-4xl font-bold">Consumer {"->"} 🪣</div>
+            <div className="text-2xl md:text-4xl font-bold">
+              Consumer {"->"} 🪣
+            </div>
             <div className="mt-2">
               The founders of Saber have repeatedly mentioned that Saber is an
               infrastructure protocol, not an app. While projects like CASH have

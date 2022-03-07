@@ -10,7 +10,7 @@ const FrostCard = ({ children, noPadding, className }: Props) => {
     <div
       className={`${noPadding ? "p-0" : "p-5"} ${
         className && className
-      } shadow-lg bg-white rounded-xl bg-opacity-40 backdrop-filter backdrop-blur-lg`}
+      } shadow-lg bg-white rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg`}
     >
       {children}
     </div>
