@@ -62,13 +62,13 @@ const Home: NextPage = () => {
         <span></span>
         <span></span>
       </div>
-      <div className={`foreground`}>
+      <div className={`foreground `}>
         <Navbar />
-        <div className="max-w-4xl mx-auto">
-          <div className="font-bold text-7xl text-center mt-16">
+        <div className="max-w-4xl mx-auto md:p-0 p-4">
+          <div className="font-bold text-4xl md:text-7xl text-center mt-16">
             <h1>Composable Stablecoin</h1>
           </div>
-          <div className="mt-8 text-center text-3xl max-w-4xl mx-auto text-gray-700">
+          <div className="mt-8 text-center text-xl md:text-3xl max-w-4xl mx-auto text-gray-700">
             Bucket facilitates the aggregation of stablecoins.
           </div>
           <FrostCard noPadding={true} className="max-w-lg my-16 mx-auto py-2">
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </FrostCard>
-          <div className="mt-8 text-center text-3xl  mx-auto text-gray-700">
+          <div className="mt-8 text-center text-xl md:text-3xl  mx-auto text-gray-700">
             <div>Use bucket across the defi ecosystem</div>
             <div className="mt-2">
               Maintain{" "}
@@ -97,29 +97,10 @@ const Home: NextPage = () => {
               account instead of dozens
             </div>
           </div>
-          {/* <div className="relative  mt-16 image-wrapper">
-            <div className="  mx-auto image-container shadow-lg rounded-xl ">
-              <Image
-                src="/deposit.png"
-                layout="fill"
-                objectFit="contain"
-                alt="deposit view"
-                className="rounded-xl "
-              ></Image>
-            </div>
-            <div className=" mx-auto image-container-2 shadow-lg rounded-xl ">
-              <Image
-                src="/balance.png"
-                layout="fill"
-                objectFit="contain"
-                alt="deposit view"
-                className="rounded-xl "
-              ></Image>
-            </div>
-          </div> */}
+          
           <div className="h-16"></div>
-          <FrostCard className=" w-full my-16 text-lg">
-            <div className="text-4xl font-bold">Protocol {"->"} 🪣</div>
+          <FrostCard className=" w-full my-16 text-md md:text-lg">
+            <div className="text-xl md:text-4xl font-bold">Protocol {"->"} 🪣</div>
             <div className="mt-2">
               BUCKET is an aggregation layer on top of existing stablecoins,
               similar to a stablecoin ETF. As more stablecoins enter the
@@ -139,7 +120,7 @@ const Home: NextPage = () => {
             </div>
           </FrostCard>
           <FrostCard className=" w-full my-16 text-lg">
-            <div className="text-4xl font-bold">Consumer {"->"} 🪣</div>
+            <div className="text-xl md:text-4xl font-bold">Consumer {"->"} 🪣</div>
             <div className="mt-2">
               The founders of Saber have repeatedly mentioned that Saber is an
               infrastructure protocol, not an app. While projects like CASH have
