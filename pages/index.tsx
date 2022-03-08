@@ -99,8 +99,43 @@ const Home: NextPage = () => {
             Supported Solana Stablecoins
           </div>
         </FadeInSection>
-        <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
-          <div className="max-w-7xl mx-auto md:p-0 p-4"></div>
+        <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
+          <div className="max-w-7xl mx-auto md:p-0 p-4">
+            <div className=" h-36 grid grid-cols-4">
+              <div className=" flex items-center mx-auto">
+                <Image
+                  src="/coins/usdc.svg"
+                  alt="usdc"
+                  height={100}
+                  width={100}
+                />
+              </div>
+              <div className=" flex items-center mx-auto">
+                <Image
+                  src="/coins/usdt.svg"
+                  alt="usdc"
+                  height={100}
+                  width={100}
+                />
+              </div>
+              <div className=" flex items-center mx-auto">
+                <Image
+                  src="/coins/ust.svg"
+                  alt="usdc"
+                  height={100}
+                  width={100}
+                />
+              </div>
+              <div className=" flex items-center mx-auto">
+                <Image
+                  src="/coins/uxd.png"
+                  alt="usdc"
+                  height={100}
+                  width={100}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <FadeInSection direction="bottom">

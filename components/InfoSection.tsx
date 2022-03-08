@@ -14,7 +14,7 @@ const InfoSection = ({ title, content, className }: Props) => {
           <div className="block md:hidden text-center text-2xl font-medium mb-2">{title}</div>
         <FrostCard className="w-full">
           {content.map((c: string, key: number) => (
-            <div key={key} className={`${key != 0 && "mt-2"}`}>
+            <div key={key} className={`${key != 0 && "mt-2 "} text-lg`}>
               {c}
             </div>
           ))}
