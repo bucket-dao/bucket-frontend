@@ -4,6 +4,7 @@ import FrostCard from "../components/FrostCard";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import InfoSection from "../components/InfoSection";
+import FadeInSection from "../components/FadeInSection";
 
 const Home: NextPage = () => {
   const infiniteLoopContent = (
@@ -50,13 +51,19 @@ const Home: NextPage = () => {
         <Navbar />
 
         <div className="max-w-7xl mx-auto md:p-0 p-4">
-          <div className="font-bold text-5xl md:text-7xl mt-16">One $BUCK</div>
-          <div className="mt-2 font-bold text-5xl md:text-7xl ">
-            to represent them all
-          </div>
-          <div className="mt-5 text-left text-lg md:text-3xl font-medium text-gray-700">
-            A single stablecoin to use across the Solana ecosystem
-          </div>
+          <FadeInSection direction="bottom">
+            <div className="font-bold text-5xl md:text-7xl mt-16">
+              One $BUCK
+            </div>
+            <div className="mt-2 font-bold text-5xl md:text-7xl ">
+              to represent them all
+            </div>
+          </FadeInSection>
+          <FadeInSection direction="right">
+            <div className="mt-5 text-left text-lg md:text-3xl font-medium text-gray-700">
+              A single stablecoin to use across the Solana ecosystem
+            </div>
+          </FadeInSection>
           {/* <FrostCard noPadding={true} className="max-w-lg my-16 mx-auto py-2">
             <div className="max-w-2xl mx-auto relative marquee-container block">
               <div className="marquee flex justify-around">
@@ -69,65 +76,83 @@ const Home: NextPage = () => {
           </FrostCard> */}
 
           <div className="h-16"></div>
-          <div className="text-3xl md:text-4xl mb-8 font-bold">Why $BUCK?</div>
-          {infoSectionData.map((data, key) => (
-            <div key={key}>
-              <InfoSection
-                title={data.title}
-                content={data.content}
-                className={`${key != 0 && "pt-8"}`}
-              />
+          <FadeInSection direction="bottom">
+            <div className="text-3xl md:text-4xl mb-8 font-bold">
+              Why $BUCK?
             </div>
-          ))}
+          </FadeInSection>
+          <FadeInSection direction="right">
+            {infoSectionData.map((data, key) => (
+              <div key={key}>
+                <InfoSection
+                  title={data.title}
+                  content={data.content}
+                  className={`${key != 0 && "pt-8"}`}
+                />
+              </div>
+            ))}
+          </FadeInSection>
           <div className="h-16"></div>
         </div>
-        <div className="text-2xl md:text-3xl font-bold text-center mb-4">
-          Supported Solana Stablecoins
-        </div>
+        <FadeInSection direction="bottom">
+          <div className="text-2xl md:text-3xl font-bold text-center mb-4">
+            Supported Solana Stablecoins
+          </div>
+        </FadeInSection>
         <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
           <div className="max-w-7xl mx-auto md:p-0 p-4"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto md:p-0 p-4">
-          {/* <div className="text-3xl md:text-4xl mb-8 mt-16 font-bold">
+        <FadeInSection direction="bottom">
+          <div className="max-w-7xl mx-auto md:p-0 p-4">
+            {/* <div className="text-3xl md:text-4xl mb-8 mt-16 font-bold">
             How it works
           </div> */}
-          <div >
-            <div className="mt-16 text-center text-xl md:text-3xl  mx-auto text-gray-700">
-              <div>Use bucket across the defi ecosystem</div>
-              <div className="mt-2">
-                Maintain{" "}
-                <span className="text-black">
-                  lower concentrated stable risk
-                </span>
-              </div>
-              <div className="mt-2">
-                <span className="text-black">Earn additional yield</span>{" "}
-                without losing spending power
-              </div>
-              <div className="mt-2">
-                Integrate bucket into your protocol to{" "}
-                <span className="text-black">maintain one stablecoin</span>{" "}
-                account instead of dozens
+            <div>
+              <div className="mt-16 text-center text-xl md:text-3xl  mx-auto text-gray-700">
+                <div>Use bucket across the defi ecosystem</div>
+                <div className="mt-2">
+                  Maintain{" "}
+                  <span className="text-black">
+                    lower concentrated stable risk
+                  </span>
+                </div>
+                <div className="mt-2">
+                  <span className="text-black">Earn additional yield</span>{" "}
+                  without losing spending power
+                </div>
+                <div className="mt-2">
+                  Integrate bucket into your protocol to{" "}
+                  <span className="text-black">maintain one stablecoin</span>{" "}
+                  account instead of dozens
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </FadeInSection>
 
-        <div className="text-2xl md:text-3xl font-bold text-center mt-16 mb-4">
-          Built on top of
-        </div>
-        <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
-          <div className="max-w-7xl mx-auto md:p-0 p-4"></div>
-        </div>
+        <FadeInSection direction="bottom">
+          <div className="text-2xl md:text-3xl font-bold text-center mt-16 mb-4">
+            Built on top of
+          </div>
+
+          <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
+            <div className="max-w-7xl mx-auto md:p-0 p-4"></div>
+          </div>
+        </FadeInSection>
 
         <div className=" bucket-gradient w-full bg-opacity-40 backdrop-filter backdrop-blur-lg">
           <div className="max-w-7xl mx-auto md:p-0 p-4">
-            <div className="text-xl md:text-3xl font-bold text-center py-16">
-              Start using Bucket today.
-            </div>
+            <FadeInSection direction="right">
+              <div className="text-xl md:text-3xl font-bold text-center py-16">
+                Start using Bucket today.
+              </div>
+            </FadeInSection>
           </div>
         </div>
+        <div className="h-16"></div>
+        <div className="h-16"></div>
+        <div className="h-16"></div>
       </div>
       <div className="shadow-bg false"></div>
     </div>
