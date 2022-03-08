@@ -21,6 +21,16 @@ a {
   box-sizing: border-box;
 }
 
+.bucket-gradient {
+  background: rgb(177, 251, 215,0.6);
+  background: radial-gradient(
+    circle,
+    rgba(177, 251, 215, 0.6) 0%,
+    rgba(132, 217, 233, 0.6) 37%,
+    rgba(144, 84, 213, 0.6) 100%
+  );
+}
+
 // BACKGROUND
 .background {
   position: absolute;
@@ -34,7 +44,7 @@ a {
   height: 100%;
   width: 100vw;
   z-index: 1;
-  background-color: rgb(255, 255, 255, 0.4);
+  background-color: rgb(255, 255, 255, 0.6);
   overflow: auto;
   transform: translate3d(0, 0, 200px);
 }
@@ -52,7 +62,8 @@ $amount: 20;
   animation-duration: $animationDuration;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  $colors: (#583c87, #e45a84, #ffacac);
+  // $colors: (#583c87, #e45a84, #ffacac);
+  $colors: (rgb(123, 84, 213),rgb(132, 217, 233),rgb(177, 251, 215));
   @for $i from 1 through $amount {
     &:nth-child(#{$i}) {
       color: nth($colors, random(length($colors)));
@@ -149,7 +160,9 @@ $amount: 20;
   pointer-events: none;
   bottom: 0;
   left: 0;
-  background: linear-gradient(180deg,transparent,#E0B0FF);
+  // background: linear-gradient(180deg, transparent, #e0b0ff);
+  background: linear-gradient(180deg, transparent, rgba(177, 251, 215,0.7));
+  
   opacity: 0.5;
   height: 150px;
 }

@@ -16,7 +16,34 @@ const Navbar = () => {
                 className="block py-2 pr-4 pl-3 text-lg rounded md:bg-transparent md:p-0"
                 aria-current="page"
               >
-                Home
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-lg rounded md:bg-transparent md:p-0"
+                aria-current="page"
+              >
+                Github
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-lg rounded md:bg-transparent md:p-0"
+                aria-current="page"
+              >
+                Discord
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-2 pr-4 pl-3 text-lg rounded md:bg-transparent md:p-0"
+                aria-current="page"
+              >
+                Docs
               </a>
             </li>
           </ul>
