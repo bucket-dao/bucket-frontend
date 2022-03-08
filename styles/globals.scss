@@ -31,6 +31,17 @@ a {
   );
 }
 
+.text-gradient:hover {
+  background: linear-gradient(
+    rgba(177, 251, 215, 1) 0%,
+    rgba(132, 217, 233, 1) 10%,
+    rgba(144, 84, 213, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 // BACKGROUND
 .background {
   position: absolute;

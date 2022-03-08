@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           <FadeInSection direction="bottom">
             <div className="mt-16 text-center">
               <button className="p-4 bg-black text-white font-bold  backdrop-filter backdrop-blur-lg shadow-xl">
-                Get Bucket
+                <span className="text-gradient ">Get Bucket</span>
               </button>
             </div>
           </FadeInSection>
@@ -72,38 +72,50 @@ const Home: NextPage = () => {
         <FadeInSection direction="bottom">
           <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
             <div className="max-w-7xl mx-auto md:p-0 p-4">
-              <div className=" h-36 grid grid-cols-4">
+              <div className=" h-44 grid grid-cols-4">
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/coins/usdc.svg"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/coins/usdc.svg"
+                      alt="usdt"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">USDC</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/coins/usdt.svg"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/coins/usdt.svg"
+                      alt="usdt"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">USDT</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/coins/ust.svg"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/coins/ust.svg"
+                      alt="ust"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">UST</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/coins/uxd.png"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/coins/uxd.png"
+                      alt="uxd"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">UXD</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -146,38 +158,50 @@ const Home: NextPage = () => {
         <FadeInSection direction="bottom">
           <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
             <div className="max-w-7xl mx-auto md:p-0 p-4">
-              <div className=" h-36 grid grid-cols-4">
+              <div className="h-44 grid grid-cols-4">
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/assets/crate.svg"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/assets/crate.svg"
+                      alt="crate"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">Crate</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/assets/pyth.svg"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/assets/pyth.svg"
+                      alt="pyth"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">Pyth</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/assets/saber.png"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/assets/saber.png"
+                      alt="saber"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">Saber</div>
+                  </div>
                 </div>
                 <div className=" flex items-center mx-auto">
-                  <BlurImage
-                    src="/assets/anchor.png"
-                    alt="usdc"
-                    height={100}
-                    width={100}
-                  />
+                  <div>
+                    <BlurImage
+                      src="/assets/anchor.png"
+                      alt="anchor"
+                      height={100}
+                      width={100}
+                    />
+                    <div className="font-medium text-center mt-2">Anchor</div>
+                  </div>
                 </div>
               </div>
             </div>
