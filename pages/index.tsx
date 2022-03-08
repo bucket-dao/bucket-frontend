@@ -69,7 +69,7 @@ const Home: NextPage = () => {
           </FrostCard> */}
 
           <div className="h-16"></div>
-          <div className="text-2xl md:text-4xl mb-8 font-bold">Why $BUCK?</div>
+          <div className="text-3xl md:text-4xl mb-8 font-bold">Why $BUCK?</div>
           {infoSectionData.map((data, key) => (
             <div key={key}>
               <InfoSection
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
           ))}
           <div className="h-16"></div>
         </div>
-        <div className="text-xl md:text-3xl font-bold text-center mb-4">
+        <div className="text-2xl md:text-3xl font-bold text-center mb-4">
           Supported Solana Stablecoins
         </div>
         <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
@@ -89,11 +89,11 @@ const Home: NextPage = () => {
         </div>
 
         <div className="max-w-7xl mx-auto md:p-0 p-4">
-          {/* <div className="text-2xl md:text-4xl mb-8 mt-16 font-bold">
+          {/* <div className="text-3xl md:text-4xl mb-8 mt-16 font-bold">
             How it works
           </div> */}
           <div >
-            <div className="mt-16 text-center text-lg md:text-3xl  mx-auto text-gray-700">
+            <div className="mt-16 text-center text-xl md:text-3xl  mx-auto text-gray-700">
               <div>Use bucket across the defi ecosystem</div>
               <div className="mt-2">
                 Maintain{" "}
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="text-xl md:text-3xl font-bold text-center mt-16 mb-4">
+        <div className="text-2xl md:text-3xl font-bold text-center mt-16 mb-4">
           Built on top of
         </div>
         <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
