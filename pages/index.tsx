@@ -238,7 +238,8 @@ const infoSectionData = [
     title: "Platforms & Protocols",
     content: [
       "BUCKET is an aggregation layer on top of existing stablecoins, similar to a stablecoin ETF. As more stablecoins enter the ecosystem, BUCKET will sit at the top of the funnel to analyze the respective risks and utilities of each stablecoin and incorporate them as their risks become better understood.",
-      "On top of these long-tail stablecoins, there is a range of wrapped stablecoins, such as different bridged versions of UST that fragment liquidity. BUCKET can incorporate them under one umbrella and issue one canonical mint. Speaking to DEXs and DeFi protocols across Solana, it became clear that USDC will remain the default medium of exchange for a while. The lack of liquidity and certainty around long-tail stablecoins prevents these protocols from adding most non-custodial stablecoins.",
+      "On top of these long-tail stablecoins, there is a range of wrapped stablecoins, such as different bridged versions of UST that fragment liquidity. BUCKET can incorporate them under one umbrella and issue one canonical mint.",
+      "Speaking to DEXs and DeFi protocols across Solana, it became clear that USDC will remain the default medium of exchange for a while. The lack of liquidity and certainty around long-tail stablecoins prevents these protocols from adding most non-custodial stablecoins.",
     ],
   },
 ];
