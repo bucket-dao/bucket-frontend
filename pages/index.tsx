@@ -64,6 +64,11 @@ const Home: NextPage = () => {
               A single stablecoin to use across the Solana ecosystem
             </div>
           </FadeInSection>
+          <div className="mt-16 text-center">
+            <button className="p-4 bg-black text-white font-bold  backdrop-filter backdrop-blur-lg shadow-xl">
+              Get Bucket
+            </button>
+          </div>
           {/* <FrostCard noPadding={true} className="max-w-lg my-16 mx-auto py-2">
             <div className="max-w-2xl mx-auto relative marquee-container block">
               <div className="marquee flex justify-around">
@@ -94,49 +99,51 @@ const Home: NextPage = () => {
           </FadeInSection>
           <div className="h-16"></div>
         </div>
-        <FadeInSection direction="bottom">
+        <FadeInSection direction="right">
           <div className="text-2xl md:text-3xl font-bold text-center mb-4">
             Supported Solana Stablecoins
           </div>
         </FadeInSection>
-        <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
-          <div className="max-w-7xl mx-auto md:p-0 p-4">
-            <div className=" h-36 grid grid-cols-4">
-              <div className=" flex items-center mx-auto">
-                <Image
-                  src="/coins/usdc.svg"
-                  alt="usdc"
-                  height={100}
-                  width={100}
-                />
-              </div>
-              <div className=" flex items-center mx-auto">
-                <Image
-                  src="/coins/usdt.svg"
-                  alt="usdc"
-                  height={100}
-                  width={100}
-                />
-              </div>
-              <div className=" flex items-center mx-auto">
-                <Image
-                  src="/coins/ust.svg"
-                  alt="usdc"
-                  height={100}
-                  width={100}
-                />
-              </div>
-              <div className=" flex items-center mx-auto">
-                <Image
-                  src="/coins/uxd.png"
-                  alt="usdc"
-                  height={100}
-                  width={100}
-                />
+        <FadeInSection direction="bottom">
+          <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
+            <div className="max-w-7xl mx-auto md:p-0 p-4">
+              <div className=" h-36 grid grid-cols-4">
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/coins/usdc.svg"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/coins/usdt.svg"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/coins/ust.svg"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/coins/uxd.png"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </FadeInSection>
 
         <FadeInSection direction="bottom">
           <div className="max-w-7xl mx-auto md:p-0 p-4">
@@ -166,28 +173,64 @@ const Home: NextPage = () => {
           </div>
         </FadeInSection>
 
-        <FadeInSection direction="bottom">
+        <FadeInSection direction="right">
           <div className="text-2xl md:text-3xl font-bold text-center mt-16 mb-4">
             Built on top of
           </div>
-
-          <div className="h-36 bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
-            <div className="max-w-7xl mx-auto md:p-0 p-4"></div>
+        </FadeInSection>
+        <FadeInSection direction="bottom">
+          <div className="bg-white w-full bg-opacity-60 backdrop-filter backdrop-blur-lg">
+            <div className="max-w-7xl mx-auto md:p-0 p-4">
+              <div className=" h-36 grid grid-cols-4">
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/assets/crate.svg"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/assets/pyth.svg"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/assets/saber.png"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+                <div className=" flex items-center mx-auto">
+                  <Image
+                    src="/assets/anchor.png"
+                    alt="usdc"
+                    height={100}
+                    width={100}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </FadeInSection>
 
         <div className=" bucket-gradient w-full bg-opacity-40 backdrop-filter backdrop-blur-lg">
           <div className="max-w-7xl mx-auto md:p-0 p-4">
             <FadeInSection direction="right">
-              <div className="text-xl md:text-3xl font-bold text-center py-16">
+              <div className="text-xl md:text-3xl font-bold text-center py-32">
                 Start using Bucket today.
               </div>
             </FadeInSection>
           </div>
         </div>
+        {/* <div className="h-16"></div>
         <div className="h-16"></div>
-        <div className="h-16"></div>
-        <div className="h-16"></div>
+        <div className="h-16"></div> */}
       </div>
       <div className="shadow-bg false"></div>
     </div>
