@@ -86,7 +86,7 @@ const Home: NextPage = () => {
               Why $BUCK?
             </div>
           </FadeInSection>
-          <FadeInSection direction="right">
+          
             {infoSectionData.map((data, key) => (
               <div key={key}>
                 <InfoSection
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
                 />
               </div>
             ))}
-          </FadeInSection>
+          
           <div className="h-16"></div>
         </div>
         <FadeInSection direction="right">
