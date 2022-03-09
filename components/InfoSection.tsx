@@ -9,7 +9,7 @@ const InfoSection = ({ title, content, className }: Props) => {
   return (
     <FadeInSection direction="bottom">
       <div
-        className={`${className} border-black  border-0 md:border-l-2 grid grid-cols-12 text-xl`}
+        className={`${className} border-gray-700  border-0 md:border-l-2 grid grid-cols-12 text-xl`}
       >
         <div className="md:block hidden col-span-3 pl-4 font-bold pt-3">
           {title}

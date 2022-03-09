@@ -30,6 +30,15 @@ a {
     rgba(144, 84, 213, 0.6) 100%
   );
 }
+.blur-box {
+  // background: rgb(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 20px rgb(255, 255, 255, 0.6);
+}
+.blur-box-sm {
+  // background: rgb(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px 10px rgb(255, 255, 255, 0.6);
+}
+
 
 .text-gradient:hover {
   background: linear-gradient(
