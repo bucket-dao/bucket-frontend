@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <nav className="sticky bg-white/90 top-0 z-50 md:border-b-[1px] md:border-gray-300">
-      <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto p-4 md:py-4 flex flex-wrap justify-between items-center">
+      <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto py-4 md:py-4 flex flex-wrap justify-between items-center">
         <a href="#" className="flex items-center">
           <span className="self-center text-3xl font-normal whitespace-nowrap flex">
             Bucket <span className="block md:hidden ml-2">🪣</span>

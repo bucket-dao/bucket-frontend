@@ -7,6 +7,10 @@ import Utility from "../components/LandingSections/Utility";
 import Partners from "../components/LandingSections/Partners";
 import HowItWorks from "../components/LandingSections/HowItWorks";
 import JoinUs from "../components/LandingSections/JoinUs";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 // Video by Uzunov Rostislav: https://www.pexels.com/video/digital-animation-of-colorful-tape-rolls-10613972/
 // Video by cottonbro: https://www.pexels.com/video/high-speed-photography-of-colorful-ink-diffusion-in-water-9669111/
@@ -41,6 +45,14 @@ const tones = [
 const selectIndex = (max: number) => Math.floor(Math.random() * max);
 
 const Home: NextPage = () => {
+  const { publicKey } = useWallet();
+  const router = useRouter();
+  useEffect(() => {
+    if (publicKey) {
+      router.push("/app");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [publicKey]);
   return (
     <div className="body-wrapper">
       <Head>
@@ -58,7 +70,9 @@ const Home: NextPage = () => {
 
         <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
           <Heading />
-
+          {/* <WalletMultiButton startIcon={null as any}>
+            Get Bucket 🪣
+          </WalletMultiButton> */}
           <hr className="my-20 lg:my-24" />
 
           <Stablecoins />

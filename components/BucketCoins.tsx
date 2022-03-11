@@ -31,7 +31,7 @@ const BucketCoins = () => {
           </div>
         </div>
         <BlurImage
-          src="/assets/bucket.png"
+          src="/assets/bucketbig.png"
           alt="bucket"
           height={200}
           width={200}
