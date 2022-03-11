@@ -304,7 +304,7 @@ const Home: NextPage = () => {
               </span>
 
               <p className="relative text-lg ml-6 md:ml-12 md:text-3xl font-medium text-slate-500">
-                It's possible a stablecoin allocations move away from the target
+                It is possible a stablecoin allocations move away from the target
                 allocations over time. In this case, bucket will routinely check
                 allocation ratios and <b className="text-black">rebalance</b>{" "}
                 the stablecoins when needed.
