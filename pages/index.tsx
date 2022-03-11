@@ -45,6 +45,14 @@ const tones = [
 const selectIndex = (max: number) => Math.floor(Math.random() * max);
 
 const Home: NextPage = () => {
+  const { publicKey } = useWallet();
+  const router = useRouter();
+  useEffect(() => {
+    if (publicKey) {
+      router.push("/app");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [publicKey]);
   return (
     <div className="body-wrapper">
       <Head>

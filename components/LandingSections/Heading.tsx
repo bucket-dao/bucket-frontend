@@ -1,3 +1,4 @@
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import BucketCoins from "../BucketCoins";
 import FadeInSection from "../FadeInSection";
 

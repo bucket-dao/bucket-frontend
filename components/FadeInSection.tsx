@@ -7,8 +7,9 @@ const FadeInSection = (props: any) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => setVisible(entry.isIntersecting));
     });
-    observer.observe(domRef.current);
-    return () => observer.unobserve(domRef.current);
+    const domCurrentRef = domRef.current;
+    observer.observe(domCurrentRef);
+    return () => observer.unobserve(domCurrentRef);
   }, []);
   const getFadeInDirection = (dir: string) => {
     if (dir === "bottom") return "fade-in-section-bottom";
