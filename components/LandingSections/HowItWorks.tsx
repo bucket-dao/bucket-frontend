@@ -27,9 +27,9 @@ const ListItems = [
     number: "01",
     paragraph: (
       <>
-        A user <b className="text-black">deposit</b> any pre-approved USD pegged
-        stablecoin into bucket. In return, users receive an equal amount of
-        $BUCK token.
+        A user can <b className="text-black">deposit</b> any pre-approved USD
+        pegged stablecoin into bucket protocol. In return, users will receive an
+        equal amount of $BUCK token.
       </>
     ),
   },
@@ -37,10 +37,11 @@ const ListItems = [
     number: "02",
     paragraph: (
       <>
-        A user <b className="text-black">redeem</b> can return some portion of
-        their $BUCK token. Users are not required to have previously deposited
-        into the bucket. As long as aa user has $BUCK, they can redeem an equal
-        amount of USD pegged stablecoins in the bucket.
+        A user can <b className="text-black">redeem</b> a share of the USD
+        pegged stablecoins collateralizing $BUCK by returning some portion of
+        $BUCK token. Users are not required to have previously deposited into
+        bucket protocol. Anyone with $BUCK can switch back to USD pegged
+        stablecoins at anytime.
       </>
     ),
   },
@@ -48,10 +49,10 @@ const ListItems = [
     number: "03",
     paragraph: (
       <>
-        Bucket can <b className="text-black">approve or remove</b> USD pegged
-        stablecoins based on certain factors, such as risk profile. Over time,
-        this is a function that will be decentralized via something like DAO
-        governence.
+        Bucket protocol can <b className="text-black">approve or remove</b> USD
+        pegged stablecoins based on certain factors, such as risk profile. Over
+        time, this is a function that will be decentralized via something like
+        DAO governence.
       </>
     ),
   },
@@ -59,7 +60,7 @@ const ListItems = [
     number: "04",
     paragraph: (
       <>
-        Bucket will aim to{" "}
+        Bucket protocol will aim to{" "}
         <b className="text-black">maintain a specific allocation</b> for each
         USD pegged stablecoins. This allocation can be modified over time based
         on user preferences, risk profiles, and more.
@@ -70,10 +71,10 @@ const ListItems = [
     number: "05",
     paragraph: (
       <>
-        It is possible a stablecoin allocations move away from the target
-        allocations over time. In this case, bucket will routinely check
-        allocation ratios and <b className="text-black">rebalance</b> the
-        stablecoins when needed.
+        It is possible a stablecoin deposit ratios move away from the target
+        allocations over time. In this case, bucket protocol will routinely
+        check actual vs expected allocation and{" "}
+        <b className="text-black">rebalance</b> assets when needed.
       </>
     ),
   },
@@ -81,7 +82,7 @@ const ListItems = [
     number: "06",
     paragraph: (
       <>
-        Bucket will choose some percent of assets for{" "}
+        Bucket protocol will choose some percent of assets for{" "}
         <b className="text-black">yield generation</b>. The generated returns
         will be used to fund an insurance fund and provide returns to users
         holding $BUCK token.

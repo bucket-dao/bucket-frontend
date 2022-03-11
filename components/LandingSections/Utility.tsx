@@ -44,7 +44,7 @@ const Sections = [
       },
     ],
     paragraph:
-      "Since $BUCK is collateralized by a variety of USD pegged stablecoins, uses can implicitly distribute their risk. If one stablecoin drops in value, bucket provides an additional layer of protection.",
+      "As more protocols and platforms integrate $BUCK, users will be able to directly use $BUCK. No additional swaps required. Further, $BUCK is an SPL token. So, users can do anything they would normally do with any other fungible token.",
   },
   {
     direction: "left",
@@ -60,8 +60,7 @@ const Sections = [
         post: "",
       },
     ],
-    paragraph:
-      "Since $BUCK is collateralized by a variety of USD pegged stablecoins, uses can implicitly distribute their risk. If one stablecoin drops in value, bucket provides an additional layer of protection.",
+    paragraph: "Since $BUCK is collateralized by a variety of USD pegged stablecoins, users can implicitly distribute their risk without extra effort. If one stablecoin drops in value, $BUCK provides an additional layer of protection.",
   },
   {
     direction: "right",
@@ -77,8 +76,7 @@ const Sections = [
         post: "",
       },
     ],
-    paragraph:
-      "Large pools of idle assets are inefficient. Bucket protocol can earn yield with underlying assets through different yield generating methods based on dynamic risk profiles. These methods include overcollaterized loans, liquidity provision, liquid staking, and more.",
+    paragraph: "Large pools of idle assets are inefficient. $BUCK can earn yield with underlying assets through different yield generating methods based on dynamic risk profiles. These methods include overcollaterized loans, liquidity provision, liquid staking, and more.",
   },
   {
     direction: "left",
@@ -94,8 +92,7 @@ const Sections = [
         post: "",
       },
     ],
-    paragraph:
-      "Liquidity fragmentation is problematic for users and protocols. Concentrating liquidity into a single representation of isomorphic assets can improve experiences when swapping on DEXs, protocols need to cross-margin accounts in a common token, and more.",
+    paragraph: "Liquidity fragmentation is problematic for users and protocols across all of web3. Concentrating liquidity into a single representation of isomorphic assets can improve experiences when swapping on DEXs, protocols need to cross-margin accounts in a common token, and more.",
   },
 ];
 

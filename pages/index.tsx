@@ -8,41 +8,8 @@ import Partners from "../components/LandingSections/Partners";
 import HowItWorks from "../components/LandingSections/HowItWorks";
 import JoinUs from "../components/LandingSections/JoinUs";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-
-// Video by Uzunov Rostislav: https://www.pexels.com/video/digital-animation-of-colorful-tape-rolls-10613972/
-// Video by cottonbro: https://www.pexels.com/video/high-speed-photography-of-colorful-ink-diffusion-in-water-9669111/
-// Video by cottonbro: https://www.pexels.com/video/close-up-shot-of-water-droplets-falling-onto-a-calm-water-9667531/
-// Video by ROMAN ODINTSOV: https://www.pexels.com/video/scenic-footage-of-countryside-during-dawn-4652096/
-
-const intensity = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-const tones = [
-  "slate",
-  "gray",
-  "zinc",
-  "neutral",
-  "stone",
-  "red",
-  "orange",
-  "amber",
-  "yellow",
-  "lime",
-  "green",
-  "emerald",
-  "teal",
-  "cyan",
-  "sky",
-  "blue",
-  "indigo",
-  "violet",
-  "purple",
-  "fuchsia",
-  "pink",
-  "rose",
-];
-const selectIndex = (max: number) => Math.floor(Math.random() * max);
 
 const Home: NextPage = () => {
   const { publicKey } = useWallet();
@@ -73,7 +40,6 @@ const Home: NextPage = () => {
           <hr className="my-20 lg:my-24" />
 
           <Stablecoins />
-
           <Utility />
         </div>
 

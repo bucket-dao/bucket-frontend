@@ -13,7 +13,8 @@ const Stablecoins = () => {
 
           <p className="relative mt-2 text-lg md:text-3xl font-medium text-slate-500">
             There are many versions of USD pegged stablecoins on Solana. Simply
-            exchange any approved USD pegged stablecoins you hold for $BUCK.
+            exchange any approved stablecoins you hold for $BUCK. Then, you can
+            treat it like any other fungible token.
           </p>
         </div>
       </FadeInSection>
