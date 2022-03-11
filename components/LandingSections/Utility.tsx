@@ -56,7 +56,7 @@ const Sections = [
       },
       {
         pre: "CONCENTRATED",
-        color: { color: "text-green-500", text: "RISK" },
+        color: { color: "text-green-500", text: " RISK" },
         post: "",
       },
     ],
