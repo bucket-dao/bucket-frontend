@@ -4,7 +4,7 @@ import FadeInSection from "../FadeInSection";
 const Heading = () => {
   return (
     <>
-      <div className="grid grid-cols-2 items-center ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center ">
         <div>
           <FadeInSection direction="right">
             <div className="font-bold text-5xl md:text-7xl pt-16 ">
@@ -30,7 +30,7 @@ const Heading = () => {
             </div>
           </FadeInSection>
         </div>
-        <div className=" pt-28 ">
+        <div className=" pt-28 hidden lg:block">
           <FadeInSection direction="bottom">
             <BucketCoins />
           </FadeInSection>
