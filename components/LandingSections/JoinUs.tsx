@@ -8,7 +8,7 @@ const JoinUs = () => {
             <br /> to build the most composable
             <br /> stablecoin on Solana
           </h1>
-          <button className="h-fit p-4 md:ml-6 mt-6 cursor-pointer backdrop-filter backdrop-blur-lg rounded-lg bg-black text-lg text-black font-weight-500 hover:scale-105 duration-500 ease-in-out">
+          <button className="h-fit p-4 md:ml-6 mt-6 cursor-pointer backdrop-filter backdrop-blur-lg rounded-lg bg-black text-lg text-white font-weight-500 hover:scale-105 duration-500 ease-in-out">
             Start using Bucket today
           </button>
         </div>
