@@ -1,7 +1,7 @@
 const HowItWorks = () => {
   return (
     <>
-      <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
+      <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto ">
         <div className="max-w-7xl mx-auto md:p-0 p-4">
           <h1 className="font-bold text-3xl md:text-5xl">
             HOW IT <span className="text-slate-500">WORKS</span>

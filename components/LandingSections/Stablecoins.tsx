@@ -5,7 +5,7 @@ const Stablecoins = () => {
   return (
     <>
       <FadeInSection direction="left">
-        <div className="max-w-7xl mx-auto md:p-0 p-4">
+        <div className="max-w-7xl mx-auto ">
           <h1 className="font-bold text-3xl md:text-5xl ">
             MANY STABLECOINS <br />
             IN <span className="text-blue-500">ONE</span>

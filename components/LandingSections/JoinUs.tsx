@@ -1,7 +1,7 @@
 const JoinUs = () => {
   return (
     <>
-      <div className="max-w-7xl mx-auto md:p-0">
+      <div className="max-w-7xl mx-auto ">
         <div className="w-fit text-xl md:text-3xl font-bold text-center mx-auto pb-32 flex flex-col md:flex-row">
           <h1 className="text-left">
             Join us in the journey

@@ -4,7 +4,7 @@ const Utility = () => {
   return (
     <>
       <FadeInSection direction="right">
-        <div className="max-w-7xl mx-auto md:p-0 p-4 mt-8 md:mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
           <h1 className="font-bold text-3xl md:text-5xl ">
             UTILITY <span className="text-purple-500">ACROSS</span> THE <br />
             ECOSYSTEM
@@ -20,7 +20,7 @@ const Utility = () => {
       </FadeInSection>
 
       <FadeInSection direction="left">
-        <div className="max-w-7xl mx-auto md:p-0 p-4 mt-8 md:mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
           <h1 className="font-bold text-3xl md:text-5xl ">
             LOWER <br />
             CONCENTRATED <span className="text-green-500">RISK</span>
@@ -36,7 +36,7 @@ const Utility = () => {
       </FadeInSection>
 
       <FadeInSection direction="right">
-        <div className="max-w-7xl mx-auto md:p-0 p-4 mt-8 md:mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
           <h1 className="font-bold text-3xl md:text-5xl ">
             <span className="text-rose-500">ADDITIONAL</span> YIELD,
             <br />
@@ -54,7 +54,7 @@ const Utility = () => {
       </FadeInSection>
 
       <FadeInSection direction="left">
-        <div className="max-w-7xl mx-auto md:p-0 p-4 mt-8 md:mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
           <h1 className="font-bold text-3xl md:text-5xl ">
             MORE <span className="text-blue-500">LIQUIDITY</span>,<br /> BETTER
             FOR EVERYONE
