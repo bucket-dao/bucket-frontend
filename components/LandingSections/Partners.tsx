@@ -64,13 +64,13 @@ const partnerInfo = [
     src: "/assets/augmentedLogos/anchor.svg",
     name: "Anchor",
     description:
-      "Anchor ⚓ is a framework for Solana’s Sealevel runtime providing several convenient developer tools.",
+      "Anchor ⚓ is a framework for Solana's Sealevel runtime providing several convenient developer tools.",
   },
   {
     src: "/assets/augmentedLogos/pyth.svg",
     name: "Pyth",
     description:
-      "Pyth connects high-fidelity market data from the world’s largest professional traders and exchanges to any smart contract, anywhere.",
+      "Pyth connects high-fidelity market data from the world's largest professional traders and exchanges to any smart contract, anywhere.",
   },
   {
     src: "/assets/augmentedLogos/saber.svg",
