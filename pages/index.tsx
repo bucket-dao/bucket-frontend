@@ -205,12 +205,12 @@ const Home: NextPage = () => {
               software.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
               {partnerInfo.map((pi, idx) => {
                 return (
                   <div
                     key={idx}
-                    className="partner--container h-48 w-80 2xl:w-96 rounded-lg border border-slate-100 ease-in-out duration-500 mt-4"
+                    className="partner--container h-48 rounded-lg border border-slate-100 ease-in-out duration-500 mt-4"
                   >
                     <div className="partner--background h-12 w-full rounded-t-lg py-2 bg-gradient-to-r">
                       <div className="text-center text-white">
