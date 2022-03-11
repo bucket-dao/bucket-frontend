@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bucket-program/sdk": "^0.0.4",
+    "@solana/spl-token-registry": "^0.2.2846",
     "@solana/wallet-adapter-base": "^0.7.0",
     "@solana/wallet-adapter-phantom": "^0.7.0",
     "@solana/wallet-adapter-react": "^0.13.1",
