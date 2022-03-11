@@ -39,7 +39,6 @@ a {
   box-shadow: 0 0 5px 10px rgb(255, 255, 255, 0.6);
 }
 
-
 .text-gradient:hover {
   background: linear-gradient(
     rgba(177, 251, 215, 1) 0%,
@@ -212,4 +211,70 @@ $amount: 20;
   opacity: 1;
   transform: none;
   visibility: visible;
+}
+// coins
+.coin-wrapper {
+  position: relative;
+  height: 150px;
+  width: 300px;
+}
+
+.coin-1 {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+  animation: MoveUpDown-1 3s linear infinite;
+}
+.coin-2 {
+  position: absolute;
+  left: 30px;
+  text-align: center;
+  z-index: 101;
+  animation: MoveUpDown-2 5s linear infinite;
+}
+
+.coin-3 {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  z-index: 101;
+  animation: MoveUpDown-3 5s linear infinite;
+}
+
+// move up and down
+
+.object-to-move {
+  animation: MoveUpDown 5s linear infinite;
+}
+
+@keyframes MoveUpDown-1 {
+  0%,
+  100% {
+    bottom: -30px;
+  }
+  50% {
+    bottom: -50px;
+  }
+}
+@keyframes MoveUpDown-2 {
+  0%,
+  100% {
+    bottom: 30px;
+  }
+  50% {
+    bottom: 50px;
+  }
+}
+@keyframes MoveUpDown-3 {
+  0%,
+  100% {
+    bottom: 50px;
+  }
+  50% {
+    bottom: 70px;
+  }
 }
