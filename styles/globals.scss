@@ -325,7 +325,7 @@ $amount: 20;
     bottom: 70px;
   }
 }
-
+// BUTTON
 
 .cta--button {
   background: rgba(0, 0, 0, 0)
@@ -346,6 +346,97 @@ $amount: 20;
     color: #fff;
     transition: all 250ms ease-out;
   }
+}
+
+/* WALLET BUTTON */
+.wallet-adapter-button--main .wallet-adapter-button {
+  font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif !important;
+  // background-color: white !important;
+  // border: solid 1px black !important;
+  color: black !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center !important;
+  font-size: 18px !important;
+  font-weight: 600;
+  height: 60px !important;
+  line-height: 20px !important;
+
+  border-radius: 4px;
+
+  padding-left: 0.25rem /* 4px */ !important;
+  padding-right: 0.25rem /* 4px */ !important;
+  padding-top: 1rem /* 16px */ !important;
+  padding-bottom: 1rem /* 16px */ !important;
+
+  background: rgba(0, 0, 0, 0)
+    linear-gradient(270deg, rgb(171, 102, 255) 0%, rgb(20, 241, 149) 101.39%)
+    repeat scroll 0% 0% !important;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+  cursor: pointer;
+}
+.wallet-adapter-button:hover {
+  -webkit-transform: translate(0px, -0.2em);
+  -ms-transform: translate(0px, -0.2em);
+  transform: translate(0px, -0.2em);
+
+  span {
+    background-color: transparent;
+    color: #fff;
+    transition: all 250ms ease-out;
+  }
+}
+
+.wallet-adapter-modal-wrapper {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1050;
+  max-width: 400px;
+  border-radius: 10px;
+  background-color: white !important;
+  color: black !important;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+  font-family: "DM Sans", "Roboto", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  flex: 1;
+}
+
+.wallet-adapter-modal-title {
+  text-align: center;
+  color: black !important;
+}
+
+.wallet-adapter-modal-button-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 12px;
+  cursor: pointer;
+  background: #1a1f2e;
+  border: none;
+  border-radius: 50%;
+}
+
+.wallet-adapter-modal-button-close:focus-visible {
+  outline-color: white;
+}
+
+.wallet-adapter-modal-button-close svg {
+  fill: black !important;
+  transition: fill 200ms ease 0s;
+}
+
+.wallet-adapter-modal-button-close:hover svg {
+  fill: #777 !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -398,4 +489,58 @@ $amount: 20;
 .partner--container:hover {
   box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.31);
   opacity: 1;
+}
+
+// loading
+
+.loading {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.5rem;
+  row-gap: 1.5rem;
+}
+
+// .loading:after {
+//   content: "Logging you in";
+//   color: #000;
+//   flex: 0 100%;
+//   font: 700 1.3rem "Caveat", cursive;
+//   text-align: center;
+// }
+
+.loading div {
+  background-color: #000;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: loading-effect 0.7s cubic-bezier(0.77, 0.8, 0.58, 1) infinite
+    var(--delay, 0.1s) alternate-reverse;
+}
+
+.loading div:nth-child(2) {
+  --delay: 0.4s;
+}
+.loading div:nth-child(3) {
+  --delay: 0.6s;
+}
+.loading div:nth-child(4) {
+  --delay: 0.8s;
+}
+.loading div:nth-child(5) {
+  --delay: 1s;
+}
+
+@keyframes loading-effect {
+  0% {
+    box-shadow: 0 0 4px 1px #fff3;
+    opacity: 0.2;
+    transform: translateY(3px) scale(1.1);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(-3px);
+  }
 }

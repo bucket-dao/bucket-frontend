@@ -1,12 +1,28 @@
+import { useWallet } from "@solana/wallet-adapter-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 const Navbar = () => {
+  const wallet = useWallet();
+  const router = useRouter();
+  const handleDisconnect = () => {
+    if (wallet) {
+      wallet.disconnect().then(() => {
+        router.push("/");
+      });
+    }
+  };
   return (
     <nav className="sticky px-4 md:p-0 bg-white/90 top-0 z-50 md:border-b-[1px] md:border-gray-300">
       <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto py-4 md:py-4 flex flex-wrap justify-between items-center">
-        <a href="#" className="flex items-center">
+        <a
+          onClick={handleDisconnect}
+          className="cursor-pointer flex items-center"
+        >
           <span className="self-center text-3xl font-normal whitespace-nowrap flex">
             Bucket <span className="block md:hidden ml-2">🪣</span>
           </span>
         </a>
+
         <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
           <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0">
             {links.map((link, idx) => {

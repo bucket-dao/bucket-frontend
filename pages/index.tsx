@@ -60,19 +60,16 @@ const Home: NextPage = () => {
         <meta name="description" content="Bucket Stablecoin" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="background">
+      {/* <div className="background">
         {[...Array(20)].map((_, key) => (
           <span key={key}></span>
         ))}
-      </div>
+      </div> */}
       <div className={`foreground`}>
         <Navbar />
 
         <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
           <Heading />
-          {/* <WalletMultiButton startIcon={null as any}>
-            Get Bucket 🪣
-          </WalletMultiButton> */}
           <hr className="my-20 lg:my-24" />
 
           <Stablecoins />
