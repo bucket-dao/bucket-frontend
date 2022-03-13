@@ -28,7 +28,7 @@ const Balance = ({ collateralTokens, reserveToken }: Props) => {
             </div>
           ) : (
             <div className="font-medium">
-              you don{"'"} t own any accepted stablecoins
+              you don{"'"}t own any accepted stablecoins
             </div>
           )}
 
@@ -49,7 +49,7 @@ const Balance = ({ collateralTokens, reserveToken }: Props) => {
                 })}
               </div>
             ) : (
-              <div className="font-medium">you don{"'"} own any Bucket USD</div>
+              <div className="font-medium">you don{"'"}t own any Bucket USD</div>
             )}
           </div>
         </div>

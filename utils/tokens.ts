@@ -112,3 +112,24 @@ const _getAllTokenDataFiltered = async (walletKeyAsString: string) => {
 
   return allTokens;
 };
+
+export const getTokenSupply = async (wallet: anchor.web3.PublicKey) => {
+  const supply = await connection.getTokenSupply(wallet);
+
+  return {
+    amount: supply.value.amount,
+    decimals: supply.value.decimals,
+  };
+};
+
+export const getBucketSupply = async () => {
+  return getTokenSupply(new anchor.web3.PublicKey(RESERVE_MINT));
+};
+
+export const stripTokenData = (tokenData: any) => {
+  const tokenInfo = tokenData.account.data.parsed.info.tokenAmount;
+  return {
+    amount: tokenInfo.amount,
+    decimals: tokenInfo.decimals,
+  };
+};

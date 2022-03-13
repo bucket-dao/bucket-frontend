@@ -18,7 +18,10 @@ const Navbar = () => {
           onClick={handleDisconnect}
           className="cursor-pointer flex items-center"
         >
-          <span className="self-center text-3xl font-normal whitespace-nowrap flex">
+          <span
+            style={{ fontFamily: "Poppins" }}
+            className="self-center text-3xl font-medium whitespace-nowrap flex"
+          >
             Bucket <span className="block md:hidden ml-2">🪣</span>
           </span>
         </a>
@@ -29,6 +32,7 @@ const Navbar = () => {
               return (
                 <li key={idx}>
                   <a
+                    style={{ fontFamily: "Poppins" }}
                     target="_blank"
                     rel="noreferrer"
                     href={link.url}
