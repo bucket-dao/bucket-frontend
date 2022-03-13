@@ -9,12 +9,13 @@ export const connection: anchor.web3.Connection = new anchor.web3.Connection(
 );
 
 export const BUCKET_PROGRAM_ID = new PublicKey(
-  "9tFeTGcc6saCgvZqQbqKq76vqgbJsoavjFiMDKRo7v9c"
+  // "9tFeTGcc6saCgvZqQbqKq76vqgbJsoavjFiMDKRo7v9c"
+  "7CXEmykaqZ6WZXEFuQg5rzG5RZcoo1yTVhev1tfVUUfJ"
 );
 
 export const BUCKET_PROGRAM_IDL = idl;
 
-export const RESERVE_MINT = "2XcPZAQ5TLxDXAyj29kbgh4h4pFBPTsEGbR5SQhnWHd9";
+export const RESERVE_MINT = "GKi9Tpj2AdEyrMo81AEFDKkLZ8pR7s6tt3Nky2Ua7XxS"; //"2XcPZAQ5TLxDXAyj29kbgh4h4pFBPTsEGbR5SQhnWHd9";
 
 export const AUTHORIZED_COLLATERAL_TOKENS = [
   "5AvivB7ArFKWbMTnhJjBSf1HsUMgrc2jSxRxtPTDWZcW", // 6 decimals

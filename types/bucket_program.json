@@ -127,6 +127,32 @@
       ]
     },
     {
+      "name": "removeCollateral",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "bucket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "crateToken",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "mint",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
       "name": "setCollateralAllocations",
       "accounts": [
         {
@@ -153,6 +179,91 @@
               "defined": "Collateral"
             }
           }
+        }
+      ]
+    },
+    {
+      "name": "rebalance",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "bucket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "crateToken",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "swap",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "swapAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "inputAReserve",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "outputBReserve",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "outputBFees",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "crateTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "saberProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountIn",
+          "type": "u64"
+        },
+        {
+          "name": "minimumAmountOut",
+          "type": "u64"
         }
       ]
     },
@@ -289,11 +400,6 @@
           "name": "withdrawerReserve",
           "isMut": true,
           "isSigner": false
-        },
-        {
-          "name": "oracle",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
@@ -384,6 +490,20 @@
       }
     },
     {
+      "name": "OracleSource",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pyth"
+          },
+          {
+            "name": "Switchboard"
+          }
+        ]
+      }
+    },
+    {
       "name": "PriceStatus",
       "type": {
         "kind": "enum",
@@ -443,8 +563,8 @@
     },
     {
       "code": 6001,
-      "name": "AllocationBpsExceeded",
-      "msg": "Max allocation bps exceeded"
+      "name": "AllocationBpsError",
+      "msg": "Allocation bps error"
     },
     {
       "code": 6002,
@@ -458,23 +578,51 @@
     },
     {
       "code": 6004,
+      "name": "CollateralDoesNotExistError",
+      "msg": "Cannot de-authorized a collateral mint that does not exist"
+    },
+    {
+      "code": 6005,
       "name": "CollateralSizeLimitsExceeded",
       "msg": "Collateral size limits exceeded"
     },
     {
-      "code": 6005,
-      "name": "NumericalUnderflowError",
-      "msg": "Numerical Underflow Error"
-    },
-    {
       "code": 6006,
-      "name": "NumericalOverflowError",
-      "msg": "Numerical Overflow Error"
+      "name": "CallerCannotRebalanceCollateral",
+      "msg": "Caller is not authorized to rebalance specified mints"
     },
     {
       "code": 6007,
-      "name": "NumericalDivisionError",
-      "msg": "Numerical Division Error"
+      "name": "MinCollateralError",
+      "msg": "Must maintain at least 1 approved collateral mint"
+    },
+    {
+      "code": 6008,
+      "name": "NumberOfSizeNotSupported",
+      "msg": "Number is too large and is not supported"
+    },
+    {
+      "code": 6009,
+      "name": "UnableToLoadOracle",
+      "msg": "Unable To Load Oracles"
+    },
+    {
+      "code": 6010,
+      "name": "MathError",
+      "msg": "Math Error"
+    },
+    {
+      "code": 6011,
+      "name": "CastingFailure",
+      "msg": "Casting Failure"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidOracle",
+      "msg": "Oracle Values are invalid"
     }
-  ]
+  ],
+  "metadata": {
+    "address": "7CXEmykaqZ6WZXEFuQg5rzG5RZcoo1yTVhev1tfVUUfJ"
+  }
 }

@@ -33,9 +33,9 @@ const Sections = [
     direction: "right",
     title: [
       {
-        pre: "UTILITY ",
-        color: { color: "text-purple-500", text: "ACROSS" },
-        post: " THE ",
+        pre: "",
+        color: { color: "text-purple-500", text: "UTILITY" },
+        post: "ACROSS THE ",
       },
       {
         pre: "ECOSYSTEM",
@@ -66,9 +66,9 @@ const Sections = [
     direction: "right",
     title: [
       {
-        pre: "",
-        color: { color: "text-rose-500", text: "ADDITIONAL" },
-        post: " YIELD,",
+        pre: "ADDITIONAL ",
+        color: { color: "text-rose-500", text: "YIELD" },
+        post: " ,",
       },
       {
         pre: "IN THE BACKGROUND",

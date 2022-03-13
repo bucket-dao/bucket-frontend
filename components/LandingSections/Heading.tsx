@@ -22,7 +22,7 @@ const Heading = () => {
             </div>
           </FadeInSection>
           <FadeInSection direction="right">
-            <div className="wallet-adapter-button--main text-center md:text-left mt-8">
+            <div className="wallet-adapter-button--main mx-auto text-center md:text-left mt-8">
               <WalletMultiButton startIcon={null as any}>
                 <span
                   style={{ borderRadius: "4px" }}
@@ -32,13 +32,6 @@ const Heading = () => {
                 </span>
               </WalletMultiButton>
             </div>
-            {/* <div className="text-center md:text-left mt-8">
-              <button className="cta--button px-1 py-4 cursor-pointer  backdrop-filter backdrop-blur-lg rounded-lg">
-                <span className="px-16 py-4 rounded-lg bg-white text-lg text-black font-weight-500">
-                  Get Bucket
-                </span>
-              </button>
-            </div> */}
           </FadeInSection>
         </div>
         <div className=" pt-28 hidden lg:block">

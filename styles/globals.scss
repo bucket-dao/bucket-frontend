@@ -378,6 +378,12 @@ $amount: 20;
   transition: all 1000ms ease;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .wallet-adapter-button--main .wallet-adapter-button {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
 .wallet-adapter-button:hover {
   -webkit-transform: translate(0px, -0.2em);
   -ms-transform: translate(0px, -0.2em);

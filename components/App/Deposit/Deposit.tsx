@@ -23,6 +23,7 @@ import Dropdown from "./Dropdown";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+import { generateCrateAddress } from "@crateprotocol/crate-sdk";
 
 type Props = {
   collateralTokens: any[];
@@ -105,8 +106,12 @@ const Deposit = ({
   const deposit = async () => {
     if (wallet && wallet.publicKey && bucketClient) {
       setLoading(true);
+      const [crate, _bump] = await generateCrateAddress(
+        new PublicKey(RESERVE_MINT)
+      );
+      const { addr: bucket } = await bucketClient.generateBucketAddress(crate);
       const { addr: issueAuthority, bump } =
-        await bucketClient.generateIssueAuthority(BUCKET_PROGRAM_ID);
+        await bucketClient.generateIssueAuthority(bucket);
 
       const _depositAmount = +depositAmount * 10 ** currentMaxAmount.decimals;
       // using devnet usdc oracle for now
@@ -124,6 +129,7 @@ const Deposit = ({
           console.log("Deposit Response", res);
 
           const txnConfirmed = await connection.confirmTransaction(res);
+
           if (txnConfirmed.value.err) {
             console.log("txnConfirmed:", txnConfirmed);
             error("Ooops, something went wrong.");
@@ -165,7 +171,7 @@ const Deposit = ({
 
   return (
     <div>
-      <div className=" bg-white shadow-xl rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg mx-auto  p-6 w-full max-w-lg ">
+      <div className=" mx-auto  p-6 w-full max-w-lg ">
         <div>You pay</div>
         <div className="rounded-lg mt-4 bg-gray-200 grid grid-cols-3 gap-4 ">
           {collateralTokens && (
@@ -181,12 +187,24 @@ const Deposit = ({
             <input
               className="p-3 bg-transparent text-xl font-bold outline-none text-right w-full"
               value={depositAmount}
+              autoFocus
               onChange={(e) => handleDepositAmountUpdate(e.target.value)}
             ></input>
           </div>
         </div>
-        <div className="text-sm text-right mr-4 mt-1">
-          <button onClick={handleSetMaxAmount}>max</button>
+        <div className="flex justify-between">
+          <div className="text-sm text-left ml-4 mt-1">
+            <button onClick={handleSetMaxAmount}>
+              balance:{" "}
+              {Math.floor(
+                (+currentMaxAmount.amount / 10 ** currentMaxAmount.decimals) *
+                  100
+              ) / 100}
+            </button>
+          </div>
+          <div className="text-sm text-right mr-4 mt-1">
+            <button onClick={handleSetMaxAmount}>max</button>
+          </div>
         </div>
         <div className="h-4"></div>
         <div>You receive</div>

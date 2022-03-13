@@ -8,7 +8,7 @@ type Props = {
 const Balance = ({ collateralTokens, reserveToken }: Props) => {
   return (
     <div>
-      <div className="rounded-lg shadow-xl mx-auto bg-white p-6  w-full max-w-lg  bg-opacity-60 backdrop-filter backdrop-blur-lg">
+      <div className="mx-auto p-6 w-full max-w-lg">
         <div className="text-2xl mb-2 font-bold">Your Balance:</div>
         <div className="text-left">
           <div className="text-xl font-bold">Collateral</div>
