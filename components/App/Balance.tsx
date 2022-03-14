@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react";
+import { stripTokenData } from "../../utils/tokens";
 import { mintToSymbol } from "../../utils/utils";
+import BlurImage from "../BlurImage";
+import BalanceWrapper from "./BalanceWrapper";
 
 type Props = {
   collateralTokens: any[];
@@ -6,54 +10,25 @@ type Props = {
 };
 
 const Balance = ({ collateralTokens, reserveToken }: Props) => {
+  const [reserveAmount, setReserveAmount] = useState(0);
+  useEffect(() => {
+    console.log(reserveToken);
+
+    const init = async () => {
+      const tst = await stripTokenData(reserveToken[0]);
+      setReserveAmount(+tst.amount / 10 ** tst.decimals);
+    };
+    if (reserveToken.length > 0) {
+      init();
+    }
+  }, [reserveToken]);
   return (
     <div>
-      <div className="mx-auto p-6 w-full max-w-lg">
-        <div className="text-2xl mb-2 font-bold">Your Balance:</div>
-        <div className="text-left">
-          <div className="text-xl font-bold">Collateral</div>
-          {collateralTokens.length > 0 ? (
-            <div className="font-medium">
-              {collateralTokens.map((token: any, key: number) => {
-                const tokenInfo = token.account.data.parsed.info;
-                return (
-                  <div key={key}>
-                    <div>
-                      {tokenInfo.tokenAmount.uiAmount}{" "}
-                      {mintToSymbol[tokenInfo.mint]}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="font-medium">
-              you don{"'"}t own any accepted stablecoins
-            </div>
-          )}
-
-          <div className=" mt-4  ">
-            <div className="text-xl font-bold">Bucket Balance</div>
-            {reserveToken.length > 0 ? (
-              <div className="font-medium">
-                {reserveToken.map((token: any, key: number) => {
-                  const tokenInfo = token.account.data.parsed.info;
-                  return (
-                    <div key={key}>
-                      <div>
-                        {tokenInfo.tokenAmount.uiAmount}{" "}
-                        {mintToSymbol[tokenInfo.mint]}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="font-medium">you don{"'"}t own any Bucket USD</div>
-            )}
-          </div>
-        </div>
-      </div>
+      <BalanceWrapper
+        title="Your Wallet"
+        reserveAmount={reserveToken.length > 0 ? reserveAmount : 0}
+        collateral={collateralTokens}
+      />
     </div>
   );
 };

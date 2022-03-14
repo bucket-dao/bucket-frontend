@@ -11,7 +11,11 @@ import Faucet from "../components/App/Faucet";
 import Navbar from "../components/Navbar";
 import { initBucketClient } from "../utils/bucket";
 import { RESERVE_MINT } from "../utils/constant";
-import { getBucketSupply, getCurrentTokenData, getTokenSupply } from "../utils/tokens";
+import {
+  getBucketSupply,
+  getCurrentTokenData,
+  getTokenSupply,
+} from "../utils/tokens";
 import BucketStats from "../components/App/BucketStats";
 enum ActionView {
   DEPOSIT,
@@ -94,11 +98,13 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <div className="text-center w-full mt-2">
+        {bucketClient && (
+          <Faucet bucketClient={bucketClient} refreshData={refreshData} />
+        )}
+      </div>
 
-      {bucketClient &&
-      <Faucet bucketClient={bucketClient} refreshData={refreshData}/>}
-
-      <div className="w-full py-16 max-w-7xl mx-auto text-black">
+      <div className=" w-full mx-auto text-black">
         <div className=" mx-auto grid grid-cols-12">
           <div className="col-span-3"></div>
           <div className="col-span-6 ">
@@ -171,21 +177,19 @@ const App = () => {
           </div>
         )}
         <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
-          <hr className="my-12 lg:my-24" />
+          <hr className="lg:my-12" />
         </div>
 
-        <div className="mt-4">
-          <BucketStats />
-        </div>
-        <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
-          <hr className="my-12 lg:my-24" />
-        </div>
-
-        <div className="mt-4">
-          <Balance
-            collateralTokens={collateralTokens}
-            reserveToken={reserveToken}
-          />
+        <div className="grid grid-cols-2 max-w-7xl mx-auto">
+          <div className="w-full mx-auto ">
+            <Balance
+              collateralTokens={collateralTokens}
+              reserveToken={reserveToken}
+            />
+          </div>
+          <div className="w-full mx-auto ">
+            <BucketStats />
+          </div>
         </div>
       </div>
     </div>

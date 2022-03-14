@@ -127,7 +127,7 @@ const Faucet = ({
     };
 
     return (
-        <button className="bg-blue-500/90 sticky px-4 mt-1 md:p-0 text-slate-100 text-center text-base md:text-xl font-normal" onClick={handleClick}>
+        <button className="bg-blue-500/80 hover:bg-blue-500 sticky p-2 rounded-lg mt-1  text-slate-100 text-center text-base md:text-xl font-normal" onClick={handleClick}>
             Click here to automatically receive 10k USDC/USDT on devnet
         </button>
     );

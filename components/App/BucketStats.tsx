@@ -11,6 +11,7 @@ import {
   RESERVE_MINT,
 } from "../../utils/constant";
 import { mintToSymbol } from "../../utils/utils";
+import BalanceWrapper from "./BalanceWrapper";
 
 const BucketStats = () => {
   const [supply, setSupply] = useState<number | undefined>();
@@ -33,8 +34,13 @@ const BucketStats = () => {
     init();
   }, []);
   return (
-    <div className="mx-auto p-6 w-full max-w-lg">
-      <div className="text-2xl mb-2 font-bold">Bucket Stats:</div>
+    <div >
+      <BalanceWrapper
+        title="Bucket Balance"
+        reserveAmount={supply}
+        collateral={crateTokens}
+      />
+      {/* <div className="text-2xl mb-2 font-bold">Bucket Stats:</div>
       <div>Current Supply: {supply && supply}</div>
       {crateTokens.map((_token, key: number) => {
         const token = stripTokenData(_token);
@@ -42,10 +48,9 @@ const BucketStats = () => {
           <div key={key}>
             {mintToSymbol[_token.account.data.parsed.info.mint]}:{" "}
             {Math.floor((+token.amount / 10 ** token.decimals) * 100) / 100}
-            {/* TODO: ---> CURRENTLY DOES NOT DO WELL IF WE HAVE e.g. 0.00829 supply */}
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
