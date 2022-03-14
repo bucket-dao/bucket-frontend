@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Balance from "../components/App/Balance";
 import Deposit from "../components/App/Deposit/Deposit";
 import Redeem from "../components/App/Redeem";
+import Faucet from "../components/App/Faucet";
 import Navbar from "../components/Navbar";
 import { initBucketClient } from "../utils/bucket";
 import { RESERVE_MINT } from "../utils/constant";
@@ -93,6 +94,9 @@ const App = () => {
   return (
     <div>
       <Navbar />
+
+      {bucketClient &&
+      <Faucet bucketClient={bucketClient} refreshData={refreshData}/>}
 
       <div className="w-full py-16 max-w-7xl mx-auto text-black">
         <div className=" mx-auto grid grid-cols-12">

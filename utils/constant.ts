@@ -1,7 +1,12 @@
 import { PublicKey } from "@solana/web3.js";
 import * as anchor from "@project-serum/anchor";
+import {
+  Keypair
+} from "@solana/web3.js";
 
 import idl from "../types/bucket_program.json";
+
+import * as faucetKeypair from "../public/keypairs/faucet.json";
 
 export const network = "devnet";
 export const connection: anchor.web3.Connection = new anchor.web3.Connection(
@@ -29,3 +34,14 @@ export const ORACLE_DEVNET = new PublicKey(
 );
 
 export const RESERVE_MINT_DECIMALS = 6;
+
+export const FAUCET_KEYPAIR = Keypair.fromSecretKey(Uint8Array.from(faucetKeypair));
+
+// 10k
+export const FAUCET_AMOUNT = 10000 * 10 ** RESERVE_MINT_DECIMALS;
+
+// Add public keys of token mints to allow faucet to drop `FAUCET_AMOUNT` of each
+export const FAUCET_MINTS = [
+  new PublicKey("6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP"), // USDC
+  new PublicKey("8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9") // USDT
+];
