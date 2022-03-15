@@ -10,13 +10,17 @@ import Redeem from "../components/App/Redeem";
 import Faucet from "../components/App/Faucet";
 import Navbar from "../components/Navbar";
 import { initBucketClient } from "../utils/bucket";
-import { RESERVE_MINT } from "../utils/constant";
+import { AUTHORIZED_COLLATERAL_TOKENS, RESERVE_MINT } from "../utils/constant";
 import {
+  getAuthorizedTokens,
   getBucketSupply,
   getCurrentTokenData,
   getTokenSupply,
 } from "../utils/tokens";
-import BucketStats from "../components/App/BucketStats";
+import FadeInSection from "../components/FadeInSection";
+import { generateCrateAddress } from "@crateprotocol/crate-sdk";
+import BalanceWrapper from "../components/App/BalanceWrapper";
+import FaucetDialog from "../components/App/FaucetDialog";
 enum ActionView {
   DEPOSIT,
   REDEEM,
@@ -39,8 +43,20 @@ const App = () => {
     decimals: 1,
   });
   const [view, setView] = useState(ActionView.DEPOSIT);
+  const [loading, setLoading] = useState(true);
+  const [bucketSupply, setBucketSupply] = useState(0);
+  const [crateTokens, setCrateTokens] = useState<
+    {
+      pubkey: anchor.web3.PublicKey;
+      account: anchor.web3.AccountInfo<anchor.web3.ParsedAccountData>;
+    }[]
+  >([]);
+  const [newUser, setNewUser] = useState(true);
+
   useEffect(() => {
-    if (!wallet.publicKey) {
+    if (wallet.wallet && !wallet.publicKey) {
+      wallet.connect();
+    } else if (!wallet.publicKey) {
       router.push("/");
     }
 
@@ -53,6 +69,7 @@ const App = () => {
 
     init().then(async (client) => {
       if (wallet.publicKey) {
+        setLoading(true);
         setBucketClient(client);
 
         const {
@@ -70,14 +87,19 @@ const App = () => {
         setCurrentMaxAmount(_currentMaxAmount);
         // @ts-ignore // TODO
         setReserveToken(_reserveToken);
+        updateBucketStats();
+
+        if (_collateralTokens.length > 0) {
+          // TODO: fix -> currently will also treat you as new user if you own bucket but no collateral
+          setNewUser(false);
+        }
+        setLoading(false);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet]);
 
   const refreshData = async () => {
-    console.log("tryingstart");
-
     const {
       collateralTokens: _collateralTokens,
       currentCollateralToken: defaultCollateralToken,
@@ -93,105 +115,168 @@ const App = () => {
     setCurrentMaxAmount(_currentMaxAmount);
     // @ts-ignore // TODO
     setReserveToken(_reserveToken);
-    console.log("tryingend");
+    updateBucketStats();
+    if (_collateralTokens.length > 0) {
+      setNewUser(false);
+    }
+  };
+
+  const updateBucketStats = async () => {
+    const supply = await getBucketSupply();
+    setBucketSupply(+supply.amount / 10 ** supply.decimals);
+    const [crate, _bump] = await generateCrateAddress(
+      new anchor.web3.PublicKey(RESERVE_MINT)
+    );
+
+    const _crateTokens: {
+      pubkey: anchor.web3.PublicKey;
+      account: anchor.web3.AccountInfo<anchor.web3.ParsedAccountData>;
+    }[] = await getAuthorizedTokens(
+      crate.toBase58(),
+      AUTHORIZED_COLLATERAL_TOKENS
+    );
+    console.log("crate tokens:", _crateTokens);
+    if (_crateTokens) {
+      setCrateTokens(_crateTokens);
+    }
   };
   return (
     <div>
       <Navbar />
-      <div className="text-center w-full mt-2">
-        {bucketClient && (
-          <Faucet bucketClient={bucketClient} refreshData={refreshData} />
-        )}
-      </div>
 
-      <div className=" w-full mx-auto text-black">
-        <div className=" mx-auto grid grid-cols-12">
-          <div className="col-span-3"></div>
-          <div className="col-span-6 ">
-            <div className="max-w-lg mx-auto font-bold">
-              <div className="grid gap-8 grid-cols-2 text-2xl">
-                <div className="p-2">
-                  <button
-                    className={`${
-                      view == ActionView.DEPOSIT && "underline"
-                    } font-bold hover:bg-gray-100 hover:rounded-lg p-2`}
-                    onClick={() => setView(ActionView.DEPOSIT)}
-                  >
-                    Deposit
-                  </button>
+      {!loading ? (
+        <>
+          {newUser && (
+            <div className="text-center w-full mt-2">
+              <FaucetDialog
+                bucketClient={bucketClient && bucketClient}
+                refreshData={refreshData}
+              />
+            </div>
+          )}
+          <>
+            <div className="text-center w-full mt-2">
+              {bucketClient && (
+                <Faucet bucketClient={bucketClient} refreshData={refreshData} />
+              )}
+            </div>
+            <div className=" w-full mx-auto text-black">
+              <FadeInSection direction="right">
+                <div className=" mx-auto grid grid-cols-12">
+                  <div className="col-span-3"></div>
+                  <div className="col-span-6 ">
+                    <div className="max-w-lg mx-auto font-bold">
+                      <div className="grid gap-8 grid-cols-2 text-2xl">
+                        <div className="p-2">
+                          <button
+                            className={`${
+                              view == ActionView.DEPOSIT && "underline"
+                            } font-bold hover:bg-gray-100 hover:rounded-lg p-2`}
+                            onClick={() => setView(ActionView.DEPOSIT)}
+                          >
+                            Deposit
+                          </button>
+                        </div>
+                        <div className="p-2">
+                          <button
+                            className={`${
+                              view == ActionView.REDEEM && "underline"
+                            } font-bold hover:bg-gray-100 hover:rounded-lg p-2 `}
+                            onClick={() => setView(ActionView.REDEEM)}
+                          >
+                            Redeem
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-2">
-                  <button
-                    className={`${
-                      view == ActionView.REDEEM && "underline"
-                    } font-bold hover:bg-gray-100 hover:rounded-lg p-2 `}
-                    onClick={() => setView(ActionView.REDEEM)}
-                  >
-                    Redeem
-                  </button>
+              </FadeInSection>
+              {bucketClient && (
+                <div className="max-w-lg mx-auto font-bold">
+                  <div className="mt-4">
+                    {view == ActionView.DEPOSIT && (
+                      <>
+                        {defaultCollateralToken && currentMaxAmount ? (
+                          <FadeInSection direction="top">
+                            <Deposit
+                              collateralTokens={collateralTokens}
+                              defaultCollateralToken={defaultCollateralToken}
+                              currentMaxAmount={currentMaxAmount}
+                              setCurrentMaxAmount={setCurrentMaxAmount}
+                              wallet={wallet}
+                              bucketClient={bucketClient}
+                              refreshData={refreshData}
+                            />
+                          </FadeInSection>
+                        ) : (
+                          <div className="h-[362px]">
+                            You currently do not hold any tokens that can be
+                            converted to Bucket. Mint some here.
+                          </div>
+                        )}
+                      </>
+                    )}
+                    {view == ActionView.REDEEM && (
+                      <>
+                        {reserveToken.length > 0 ? (
+                          <FadeInSection direction="top">
+                            <Redeem
+                              reserveToken={
+                                reserveToken.length > 0 ? reserveToken[0] : []
+                              }
+                              wallet={wallet}
+                              bucketClient={bucketClient}
+                              refreshData={refreshData}
+                            />
+                          </FadeInSection>
+                        ) : (
+                          <div className="h-[230px]">
+                            You currently do not hold any $BUCK.
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
+                <hr className="lg:my-12" />
+              </div>
+
+              <div className="grid grid-cols-2 max-w-7xl mx-auto">
+                <div className="w-full mx-auto ">
+                  <FadeInSection direction="left">
+                    <Balance
+                      collateralTokens={collateralTokens}
+                      reserveToken={reserveToken}
+                    />
+                  </FadeInSection>
+                </div>
+                <div className="w-full mx-auto ">
+                  <FadeInSection direction="right">
+                    <BalanceWrapper
+                      title="Bucket Balance"
+                      reserveAmount={bucketSupply > 0 ? bucketSupply : 0}
+                      collateral={crateTokens}
+                      bucket={true}
+                    />
+                  </FadeInSection>
                 </div>
               </div>
             </div>
+          </>
+        </>
+      ) : (
+        <div className="flex mt-16 pb-3 pt-3 justify-center items-center">
+          <div className="loading">
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
-        {bucketClient && (
-          <div className="max-w-lg mx-auto font-bold">
-            <div className="mt-4">
-              {view == ActionView.DEPOSIT && (
-                <>
-                  {defaultCollateralToken && currentMaxAmount ? (
-                    <Deposit
-                      collateralTokens={collateralTokens}
-                      defaultCollateralToken={defaultCollateralToken}
-                      currentMaxAmount={currentMaxAmount}
-                      setCurrentMaxAmount={setCurrentMaxAmount}
-                      wallet={wallet}
-                      bucketClient={bucketClient}
-                      refreshData={refreshData}
-                    />
-                  ) : (
-                    <div>
-                      You currently do not hold any tokens that can be converted
-                      to Bucket. Mint some here.
-                    </div>
-                  )}
-                </>
-              )}
-              {view == ActionView.REDEEM && (
-                <>
-                  {reserveToken.length > 0 ? (
-                    <Redeem
-                      reserveToken={
-                        reserveToken.length > 0 ? reserveToken[0] : []
-                      }
-                      wallet={wallet}
-                      bucketClient={bucketClient}
-                      refreshData={refreshData}
-                    />
-                  ) : (
-                    <div>You currently do not hold any $BUCK.</div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        )}
-        <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
-          <hr className="lg:my-12" />
-        </div>
-
-        <div className="grid grid-cols-2 max-w-7xl mx-auto">
-          <div className="w-full mx-auto ">
-            <Balance
-              collateralTokens={collateralTokens}
-              reserveToken={reserveToken}
-            />
-          </div>
-          <div className="w-full mx-auto ">
-            <BucketStats />
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

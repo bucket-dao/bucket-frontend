@@ -5,9 +5,15 @@ type Props = {
   title: string;
   collateral: any[];
   reserveAmount?: number;
+  bucket?: boolean;
 };
 
-const BalanceWrapper = ({ title, collateral, reserveAmount }: Props) => {
+const BalanceWrapper = ({
+  title,
+  collateral,
+  reserveAmount,
+  bucket,
+}: Props) => {
   return (
     <div>
       <div className="mx-auto p-6 w-full text-center max-w-lg">
@@ -50,6 +56,11 @@ const BalanceWrapper = ({ title, collateral, reserveAmount }: Props) => {
           )}
 
           <div className="mt-4">
+            {bucket ? (
+              <div className="text-xl text-left font-bold mb-4">Total Supply</div>
+            ) : (
+              <div className="text-xl text-left font-bold mb-4">Bucket</div>
+            )}
             {reserveAmount && reserveAmount > 0 ? (
               <div className="font-medium">
                 <div className="flex items-center">

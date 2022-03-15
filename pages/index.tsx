@@ -12,14 +12,17 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
-  const { publicKey } = useWallet();
+  const wallet = useWallet();
   const router = useRouter();
   useEffect(() => {
-    if (publicKey) {
+    if (wallet.wallet && !wallet.publicKey) {
+      wallet.connect();
+    }
+    if (wallet.publicKey) {
       router.push("/app");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [publicKey]);
+  }, [wallet.publicKey, wallet]);
   return (
     <div className="body-wrapper">
       <Head>
