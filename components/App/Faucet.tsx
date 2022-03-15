@@ -1,4 +1,5 @@
-import { Transaction } from "@solana/web3.js";
+import * as anchor from "@project-serum/anchor";
+import { Transaction, LAMPORTS_PER_SOL, Connection } from "@solana/web3.js";
 import { DetailedHTMLProps, HTMLAttributes, useEffect, useState } from "react";
 import { u64, TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -50,6 +51,16 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       progress: undefined,
     });
 
+  const getSol = async (
+    walletPubKey: anchor.web3.PublicKey,
+    conn: Connection
+  ) => {
+    const airdropSig = await conn.requestAirdrop(
+      walletPubKey,
+      1 * LAMPORTS_PER_SOL
+    );
+    await conn.confirmTransaction(airdropSig, "confirmed");
+  };
   const handleClick = async () => {
     if (wallet && wallet.publicKey && !loading) {
       console.log("hello");
@@ -57,6 +68,17 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       setLoading(true);
       const walletPubKey = wallet.publicKey;
       const conn = connection.connection;
+
+      const bal = await conn.getBalance(walletPubKey);
+      console.log("balance:", bal);
+      if (bal == 0) {
+        console.log("airdropping sol");
+        const getSolConfirmation = await getSol(walletPubKey, conn);
+        console.log(getSolConfirmation);
+      } else {
+        console.log("sufficient sol funds");
+      }
+
       try {
         const recentBlockhash = await conn.getRecentBlockhash();
         const tx = new Transaction({
@@ -142,10 +164,6 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
           >
             Click here to automatically receive 10k USDC/USDT on devnet
           </button>
-          <div className="mt-4">
-            Please make sure you own a little bit of devnet SOL to fund the
-            transaction.
-          </div>
         </>
       )}
       <ToastContainer />
