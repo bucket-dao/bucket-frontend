@@ -31,9 +31,11 @@ export const AUTHORIZED_COLLATERAL_TOKENS = [
   // "3hWRzQqCn7dBPBLpANQ4EPAfR68EDpk2E7uvEMqa9o2K", // 9 decimals
 ];
 
-export const ORACLE_DEVNET = new PublicKey(
-  "38xoQ4oeJCBrcVvca2cGk7iV1dAfrmTR1kmhSCJQ8Jto"
-);
+export const ORACLE_DEVNET: any = {
+  USDC: new PublicKey("5SSkXsEKQepHHAewytPVwdej4epN1nxgLVM84L4KXgy7"),
+  USDT: new PublicKey("38xoQ4oeJCBrcVvca2cGk7iV1dAfrmTR1kmhSCJQ8Jto"),
+  UST: new PublicKey("AUKjh1oVPZyudi3nzYSsdZxSjq42afUCvsdbKFc5CbD"),
+};
 
 export const RESERVE_MINT_DECIMALS = 6;
 

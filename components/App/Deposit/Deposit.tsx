@@ -24,6 +24,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
+import { mintToSymbol } from "../../../utils/utils";
 
 type Props = {
   collateralTokens: any[];
@@ -115,8 +116,9 @@ const Deposit = ({
         await bucketClient.generateIssueAuthority(bucket);
 
       const _depositAmount = +depositAmount * 10 ** currentMaxAmount.decimals;
-      // using devnet usdc oracle for now
-      const oracle = ORACLE_DEVNET;
+
+      const oracle: PublicKey = ORACLE_DEVNET[mintToSymbol[collateralMint]];
+
       if (issueAuthority) {
         try {
           const res = await bucketClient.deposit(
@@ -127,16 +129,13 @@ const Deposit = ({
             wallet.publicKey,
             oracle
           );
-          console.log("Deposit Response", res);
 
           const txnConfirmed = await connection.confirmTransaction(res);
 
           if (txnConfirmed.value.err) {
-            console.log("txnConfirmed:", txnConfirmed);
             error("Ooops, something went wrong.");
             setLoadingTxn(false);
           } else {
-            console.log("txnConfirmed:", txnConfirmed);
             success(
               <span>
                 Success.{" "}

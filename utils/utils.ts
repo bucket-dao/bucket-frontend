@@ -10,10 +10,5 @@ export const mintToSymbol: { [key: string]: string } = {
   "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "USDC",
   "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "USDT",
   HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "UST",
-
-  "5AvivB7ArFKWbMTnhJjBSf1HsUMgrc2jSxRxtPTDWZcW": "_USDC",
-  "5UwadZgYM3U7ZTkrH5JcwR9WYuc52nw8dbhPLfRh2XQA": "_USDT",
-  "59bq58XRWsbvnmnJsUfmjuY3RpaJm4uW1Yzja1tCiqkF": "_UST",
-  "3hWRzQqCn7dBPBLpANQ4EPAfR68EDpk2E7uvEMqa9o2K": "_UXD",
   FgfeF24bnbZdnM7ryv6pSK87Pc89VTgfqgDhV6GqvEKo: "BUCK",
 };
