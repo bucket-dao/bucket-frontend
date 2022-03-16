@@ -34,7 +34,7 @@ const Heading = () => {
             </div>
           </FadeInSection>
         </div>
-        <div className=" pt-28 hidden lg:block">
+        <div className="pt-28 hidden lg:block">
           <FadeInSection direction="bottom">
             <BucketCoins />
           </FadeInSection>

@@ -22,15 +22,19 @@ const Stablecoins = () => {
       <div className="bg-white blur-box w-full bg-opacity-60 backdrop-filter backdrop-blur-lg py-4 border-y-[1px] border-slate-200 hover:border-black ease-in-out duration-500 mt-8">
         <ul className="coin--scroll--container flex flex-row overflow-x-auto flex-nowrap">
           {coins.map((coin, idx) => (
-            <li key={idx} className="mx-8">
-              <BlurImage
-                className="coin--image"
-                src={coin.src}
-                alt={coin.name}
-                height={50}
-                width={50}
-              />
-              <div className="font-medium text-center mt-2">{coin.name}</div>
+            <li key={idx} className="mx-6">
+              <div className="coin--image--wrapper">
+                <BlurImage
+                  src={coin.src}
+                  alt={coin.name}
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="font-medium text-center mt-2">{coin.symbol}</div>
+              <div className="coin--name--wrapper font-small text-center mt-2">
+                {coin.name}
+              </div>
             </li>
           ))}
         </ul>
@@ -42,83 +46,73 @@ const Stablecoins = () => {
 const coins = [
   {
     src: "/coins/usdc.svg",
-    name: "USDC",
+    symbol: "USDC",
+    name: "USD Coin",
   },
   {
     src: "/coins/usdt.svg",
-    name: "USDT",
+    symbol: "USDT",
+    name: "USD Tether",
   },
   {
     src: "/coins/ust.svg",
-    name: "UST",
+    symbol: "UST",
+    name: "TerraUSD (Wormhole)",
   },
   {
-    src: "/coins/uxd.png",
+    src: "/coins/uxd.svg",
+    symbol: "UXD",
     name: "UXD",
   },
   {
     src: "/coins/usdc.svg",
-    name: "USDC",
-  },
-  {
-    src: "/coins/usdt.svg",
-    name: "USDT",
-  },
-  {
-    src: "/coins/ust.svg",
-    name: "UST",
-  },
-  {
-    src: "/coins/uxd.png",
-    name: "UXD",
+    symbol: "apUSDC",
+    name: "USDC (Allbridge - Polygon)",
   },
   {
     src: "/coins/usdc.svg",
-    name: "USDC",
-  },
-  {
-    src: "/coins/usdt.svg",
-    name: "USDT",
-  },
-  {
-    src: "/coins/ust.svg",
-    name: "UST",
-  },
-  {
-    src: "/coins/uxd.png",
-    name: "UXD",
+    symbol: "aeUSDC",
+    name: "USDC (Allbridge - Ethereum)",
   },
   {
     src: "/coins/usdc.svg",
-    name: "USDC",
-  },
-  {
-    src: "/coins/usdt.svg",
-    name: "USDT",
-  },
-  {
-    src: "/coins/ust.svg",
-    name: "UST",
-  },
-  {
-    src: "/coins/uxd.png",
-    name: "UXD",
+    symbol: "aaUSDC",
+    name: "USDC (Allbridge - Avalanche)",
   },
   {
     src: "/coins/usdc.svg",
-    name: "USDC",
+    symbol: "acUSDC",
+    name: "USDC (Allbridge - Celo)",
+  },
+  {
+    src: "/coins/usdc.svg",
+    symbol: "afUSDC",
+    name: "USDC (Allbridge - Fantom)",
   },
   {
     src: "/coins/usdt.svg",
-    name: "USDT",
+    symbol: "apUSDT",
+    name: "USD Tether (Allbridge - Polygon)",
+  },
+  {
+    src: "/coins/usdt.svg",
+    symbol: "aaUSDT",
+    name: "USD Tether (Allbridge - Avalanche)",
+  },
+  {
+    src: "/coins/usdt.svg",
+    symbol: "aeUSDT",
+    name: "USD Tether (Allbridge - Ethereum)",
+  },
+  {
+    src: "/coins/usdt.svg",
+    symbol: "ahUSDT",
+    name: "USD Tether (Allbridge - HECO)",
   },
   {
     src: "/coins/ust.svg",
-    name: "UST",
-  },
-  {
-    src: "/coins/uxd.png",
-    name: "UXD",
+    symbol: "atUST",
+    name: "UST (Allbridge - Terra)",
   },
 ];
 

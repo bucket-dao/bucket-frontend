@@ -20,7 +20,7 @@ const Navbar = () => {
         >
           <span
             style={{ fontFamily: "Poppins" }}
-            className="self-center text-3xl font-medium whitespace-nowrap flex"
+            className="text-gradient self-center text-3xl font-medium whitespace-nowrap flex"
           >
             Bucket <span className="block md:hidden ml-2">🪣</span>
           </span>

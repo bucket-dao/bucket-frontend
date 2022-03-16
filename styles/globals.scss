@@ -382,12 +382,7 @@ $amount: 20;
   transition: all 1000ms ease;
   cursor: pointer;
 }
-@media (max-width: 768px) {
-  .wallet-adapter-button--main .wallet-adapter-button {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
+
 .wallet-adapter-button:hover {
   -webkit-transform: translate(0px, -0.2em);
   -ms-transform: translate(0px, -0.2em);
@@ -460,9 +455,15 @@ $amount: 20;
   scrollbar-width: none; /* Firefox */
 }
 
-.coin--image {
-  height: 1.5rem;
-  width: 1.5rem;
+.coin--image--wrapper {
+  margin: auto;
+  height: 3rem;
+  width: 3rem;
+}
+
+.coin--name--wrapper {
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .offset--text--underline::after {
@@ -470,6 +471,7 @@ $amount: 20;
   background: rgba(0, 0, 0, 0)
     linear-gradient(270deg, rgb(171, 102, 255) 0%, rgb(20, 241, 149) 101.39%)
     repeat scroll 0% 0%;
+  opacity: 0.7;
   height: 1rem;
   display: block;
   position: absolute;
@@ -552,5 +554,17 @@ $amount: 20;
   100% {
     opacity: 0.8;
     transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 768px) {
+  .wallet-adapter-button--main .wallet-adapter-button {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .offset--text--underline::after {
+    height: 0.5rem;
+    bottom: 0.3rem;
   }
 }
