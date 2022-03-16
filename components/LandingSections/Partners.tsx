@@ -14,7 +14,7 @@ const Partners = () => {
             <span className="text-violet-500"> CLASS</span>
           </h1>
 
-          <p className="relative mt-2 text-lg md:text-3xl font-medium text-slate-500">
+          <p className="relative mt-2 w-full md:w-9/12 text-lg text-slate-500">
             Optimized for composability. Built on industry leading, open-source
             software.
           </p>
