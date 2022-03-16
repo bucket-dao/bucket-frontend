@@ -14,7 +14,7 @@ import { AUTHORIZED_COLLATERAL_TOKENS, RESERVE_MINT } from "../utils/constant";
 import {
   getAuthorizedTokens,
   getBucketSupply,
-  getCurrentTokenData,
+  getRelevantTokenData,
 } from "../utils/tokens";
 import FadeInSection from "../components/FadeInSection";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
@@ -78,7 +78,7 @@ const App = () => {
           currentCollateralToken: defaultCollateralToken,
           currentMaxAmount: _currentMaxAmount,
           reserveToken: _reserveToken,
-        } = await getCurrentTokenData(wallet);
+        } = await getRelevantTokenData(wallet);
         console.log(_currentMaxAmount);
 
         // @ts-ignore // TODO
@@ -106,7 +106,7 @@ const App = () => {
       currentCollateralToken: defaultCollateralToken,
       currentMaxAmount: _currentMaxAmount,
       reserveToken: _reserveToken,
-    } = await getCurrentTokenData(wallet);
+    } = await getRelevantTokenData(wallet);
     console.log(_currentMaxAmount);
 
     // @ts-ignore // TODO
