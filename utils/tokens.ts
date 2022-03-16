@@ -5,8 +5,82 @@ import {
   connection,
   network,
   RESERVE_MINT,
+  SPL_PROGRAM_ID,
 } from "./constant";
 
+////////////////////////////////////////////////////////////////
+// HELPERS
+////////////////////////////////////////////////////////////////
+
+// returns parsed spl token data
+const _getAllTokenData = async (wallet: anchor.web3.PublicKey) => {
+  const splToken = await connection.getParsedTokenAccountsByOwner(wallet, {
+    programId: new anchor.web3.PublicKey(SPL_PROGRAM_ID),
+  });
+  return splToken && splToken;
+};
+
+const _getAllTokenDataFiltered = async (wallet: anchor.web3.PublicKey) => {
+  const tokens = await _getAllTokenData(wallet);
+
+  let tokenList = await new TokenListProvider().resolve().then((tokens) => {
+    const tokenList = tokens.filterByClusterSlug(network).getList();
+    return tokenList;
+  });
+
+  let allTokens = [];
+  if (tokens && tokens.value) {
+    for (const token of tokens.value) {
+      const mint = token.account.data.parsed.info.mint;
+      const amount = token.account.data.parsed.info.tokenAmount.amount;
+
+      const tkn = tokenList.find((token) => token.address == mint);
+
+      if (tkn) {
+        allTokens.push({
+          name: tkn.name,
+          symbol: tkn.symbol,
+          amount,
+          mint,
+          tags: tkn.tags,
+          logoURI: tkn.logoURI,
+          decimals: tkn.decimals,
+        });
+      }
+    }
+  }
+
+  return allTokens;
+};
+
+const _getTokenSupply = async (wallet: anchor.web3.PublicKey) => {
+  const supply = await connection.getTokenSupply(wallet);
+
+  return {
+    amount: supply.value.amount,
+    decimals: supply.value.decimals,
+  };
+};
+
+////////////////////////////////////////////////////////////////
+// PUBLIC
+////////////////////////////////////////////////////////////////
+
+// returns a list of the token data of all authorized collateral
+export const getAuthorizedTokens = async (
+  wallet: anchor.web3.PublicKey,
+  mints: string[]
+) => {
+  const tokens = await _getAllTokenData(wallet);
+
+  const filteredTokens = tokens.value.filter((tokenData: any) =>
+    mints.includes(tokenData?.account.data.parsed.info.mint)
+  );
+
+  return filteredTokens;
+};
+
+// returns authorized token & reserve mint data of a given wallet
 export const getCurrentTokenData = async (wallet: any) => {
   const tokens = await getAuthorizedTokens(
     wallet.publicKey.toBase58(),
@@ -14,8 +88,6 @@ export const getCurrentTokenData = async (wallet: any) => {
   );
 
   const currentToken = tokens.length > 0 && tokens[0];
-  console.log(currentToken);
-  console.log(tokens);
   let currentMaxAmount;
   if (currentToken) {
     currentMaxAmount =
@@ -29,7 +101,6 @@ export const getCurrentTokenData = async (wallet: any) => {
             amount: "0",
             decimals: 1,
           };
-    console.log(currentMaxAmount);
   }
   const reserveToken = await getAuthorizedTokens(wallet.publicKey.toBase58(), [
     RESERVE_MINT,
@@ -45,85 +116,8 @@ export const getCurrentTokenData = async (wallet: any) => {
   };
 };
 
-export const getAllTokenData = async (wallet: string) => {
-  let walletKey = new anchor.web3.PublicKey(wallet);
-  const splTokenRes = await connection.getParsedTokenAccountsByOwner(
-    walletKey,
-    {
-      programId: new anchor.web3.PublicKey(
-        "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
-      ),
-    }
-  );
-  return splTokenRes && splTokenRes;
-};
-
-export const getTokens = async (wallet: string) => {
-  return _getAllTokenDataFiltered(wallet);
-};
-
-export const getAuthorizedTokens = async (wallet: string, mints: string[]) => {
-  const tokens = await getAllTokenData(wallet);
-  console.log(tokens);
-
-  const filteredTokens = tokens.value.filter((tokenData: any) =>
-    mints.includes(tokenData?.account.data.parsed.info.mint)
-  );
-  console.log("filteredTokens", filteredTokens);
-  return filteredTokens;
-};
-
-const _getAllTokenDataFiltered = async (walletKeyAsString: string) => {
-  const tokens = await getAllTokenData(walletKeyAsString);
-  console.log("alltokens", tokens);
-
-  let tokenList = await new TokenListProvider().resolve().then((tokens) => {
-    const tokenList = tokens.filterByClusterSlug(network).getList();
-    return tokenList;
-  });
-
-  let allTokens = [];
-  if (tokens && tokens.value) {
-    for (const token of tokens.value) {
-      const mint = token.account.data.parsed.info.mint;
-      const amount = token.account.data.parsed.info.tokenAmount.amount;
-
-      const tkn = tokenList.find((token) => token.address == mint);
-      console.log(tkn);
-
-      if (tkn) {
-        //   let priceUSD = await getTokenPrice(mint, symbol);
-        //   if (!symbol.includes("SCAM") && !priceUSD) {
-        //     priceUSD = await getTokenPrice2(name);
-        //   }
-        allTokens.push({
-          name: tkn.name,
-          symbol: tkn.symbol,
-          amount,
-          mint,
-          tags: tkn.tags,
-          logoURI: tkn.logoURI,
-          decimals: tkn.decimals,
-          //   priceUSD,
-        });
-      }
-    }
-  }
-
-  return allTokens;
-};
-
-export const getTokenSupply = async (wallet: anchor.web3.PublicKey) => {
-  const supply = await connection.getTokenSupply(wallet);
-
-  return {
-    amount: supply.value.amount,
-    decimals: supply.value.decimals,
-  };
-};
-
 export const getBucketSupply = async () => {
-  return getTokenSupply(new anchor.web3.PublicKey(RESERVE_MINT));
+  return _getTokenSupply(new anchor.web3.PublicKey(RESERVE_MINT));
 };
 
 export const stripTokenData = (tokenData: any) => {

@@ -15,6 +15,10 @@ export const BUCKET_PROGRAM_ID = new PublicKey(
   "12VVjdoYJQeJMM1pE5a9LRrffHvJx5npkKMEwdD8SVGv"
 );
 
+export const SPL_PROGRAM_ID = new PublicKey(
+  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+);
+
 export const BUCKET_PROGRAM_IDL = idl;
 
 export const RESERVE_MINT = "8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF";

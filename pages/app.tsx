@@ -15,7 +15,6 @@ import {
   getAuthorizedTokens,
   getBucketSupply,
   getCurrentTokenData,
-  getTokenSupply,
 } from "../utils/tokens";
 import FadeInSection from "../components/FadeInSection";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
@@ -133,10 +132,7 @@ const App = () => {
     const _crateTokens: {
       pubkey: anchor.web3.PublicKey;
       account: anchor.web3.AccountInfo<anchor.web3.ParsedAccountData>;
-    }[] = await getAuthorizedTokens(
-      crate.toBase58(),
-      AUTHORIZED_COLLATERAL_TOKENS
-    );
+    }[] = await getAuthorizedTokens(crate, AUTHORIZED_COLLATERAL_TOKENS);
     console.log("crate tokens:", _crateTokens);
     if (_crateTokens) {
       setCrateTokens(_crateTokens);
