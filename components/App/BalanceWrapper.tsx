@@ -50,7 +50,7 @@ const BalanceWrapper = ({
               })}
             </div>
           ) : (
-            <div className="font-medium">
+            <div className="font-medium text-left">
               None.
             </div>
           )}

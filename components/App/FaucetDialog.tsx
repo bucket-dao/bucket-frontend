@@ -7,8 +7,9 @@ type Props = {
 };
 function FaucetDialog({ refreshData, bucketClient }: Props) {
   return (
-    <div className="bg-black/[.7] backdrop-blur-sm h-screen w-screen absolute flex items-center z-50">
+    <div className="dialog--cover bg-black/[.7] backdrop-blur-sm   flex items-center z-50">
       <div className="bg-white max-w-lg mx-auto mb-16 p-8 rounded-lg">
+          <div className="mb-4">To get started please airdrop yourself devnet tokens via the faucet below.</div>
         {bucketClient ? (
           <>
             <Faucet bucketClient={bucketClient} refreshData={refreshData} />
