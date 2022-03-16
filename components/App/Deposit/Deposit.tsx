@@ -27,6 +27,7 @@ import Image from "next/image";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
 import { getCurrentPrice } from "../../../utils/tokens";
 import { error, success } from "../../../utils/toasts";
+import SuccessfulTxn from "../../../utils/SuccessfulTxn";
 
 type Props = {
   collateralTokens: any[];
@@ -123,19 +124,7 @@ const Deposit = ({
             error("Ooops, something went wrong.");
             setLoadingTxn(false);
           } else {
-            success(
-              <span>
-                Success.{" "}
-                <a
-                  className="underline text-blue-700"
-                  href={`https://explorer.solana.com/tx/${res}?cluster=devnet`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View Transaction!
-                </a>
-              </span>
-            );
+            success(<SuccessfulTxn txn={res} />);
             await refreshData();
             setLoadingTxn(false);
           }

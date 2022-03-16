@@ -13,6 +13,7 @@ import {
 } from "../../utils/constant";
 import { toast, ToastContainer } from "react-toastify";
 import { error, success } from "../../utils/toasts";
+import SuccessfulTxn from "../../utils/SuccessfulTxn";
 
 type Props = {
   reserveToken: any;
@@ -79,19 +80,7 @@ const Redeem = ({ reserveToken, wallet, bucketClient, refreshData }: Props) => {
             setLoading(false);
           } else {
             console.log("txnConfirmed:", txnConfirmed);
-            success(
-              <span>
-                Success.{" "}
-                <a
-                  className="underline text-blue-700"
-                  href={`https://explorer.solana.com/tx/${res}?cluster=devnet`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View Transaction!
-                </a>
-              </span>
-            );
+            success(<SuccessfulTxn txn={res} />);
             await refreshData();
             setLoading(false);
           }

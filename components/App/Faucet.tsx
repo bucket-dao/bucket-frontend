@@ -11,6 +11,7 @@ import {
 } from "../../utils/constant";
 import { toast, ToastContainer } from "react-toastify";
 import { error, success } from "../../utils/toasts";
+import SuccessfulTxn from "../../utils/SuccessfulTxn";
 
 type Props = {
   bucketClient: BucketClient;
@@ -94,19 +95,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
 
         if (!txnConfirmed.value.err) {
           console.log("txnConfirmed:", txnConfirmed);
-          success(
-            <span>
-              Success.{" "}
-              <a
-                className="underline text-blue-700"
-                href={`https://explorer.solana.com/tx/${signature}?cluster=devnet`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View Transaction!
-              </a>
-            </span>
-          );
+          success(<SuccessfulTxn txn={signature} />);
           await refreshData();
         }
       } catch (e: any) {
