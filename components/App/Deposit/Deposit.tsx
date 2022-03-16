@@ -25,6 +25,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
+import { getCurrentPrice } from "../../../utils/tokens";
 
 type Props = {
   collateralTokens: any[];
@@ -49,6 +50,7 @@ const Deposit = ({
 }: Props) => {
   const [collateralMint, setCollateralMint] = useState(defaultCollateralToken);
   const [depositAmount, setDepositAmount] = useState("");
+  const [buckAmount, setBuckAmount] = useState("");
   const [loadingData, setLoadingData] = useState(false);
   const [loadingTxn, setLoadingTxn] = useState(false);
   const success = (
@@ -87,6 +89,7 @@ const Deposit = ({
       +currentMaxAmount.amount / 10 ** currentMaxAmount.decimals;
     if (+depositAmount > currentAmount) {
       setDepositAmount(currentAmount.toString());
+      updateBuckAmount(currentAmount.toString());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMaxAmount.amount, currentMaxAmount.decimals]);
@@ -98,10 +101,22 @@ const Deposit = ({
     // update user deposit amount if valid
     if (+amnt >= 0 && +amnt <= maxAmount) {
       setDepositAmount(amnt);
+      updateBuckAmount(amnt);
     }
   };
+
+  const updateBuckAmount = async (amnt: string) => {
+    const priceFeedUsd = await getCurrentPrice(collateralMint);
+    const chosenPrice = Math.min(+priceFeedUsd, 1);
+    const _buckAmount = (chosenPrice * +amnt).toString();
+    setBuckAmount(_buckAmount);
+  };
+
   const handleSetMaxAmount = () => {
     setDepositAmount(
+      (+currentMaxAmount.amount / 10 ** currentMaxAmount.decimals).toString()
+    );
+    updateBuckAmount(
       (+currentMaxAmount.amount / 10 ** currentMaxAmount.decimals).toString()
     );
   };
@@ -213,8 +228,8 @@ const Deposit = ({
             <div className="p-3">🪣 BUCK</div>
             <div className="col-span-2  rounded-lg">
               <div className="p-3 bg-transparent text-xl font-bold outline-none text-right w-full">
-                {depositAmount
-                  ? (Math.floor(+depositAmount * 100) / 100).toString()
+                {buckAmount
+                  ? (Math.floor(+buckAmount * 100) / 100).toString()
                   : 0}
               </div>
             </div>

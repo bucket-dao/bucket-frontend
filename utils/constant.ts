@@ -12,7 +12,8 @@ export const connection: anchor.web3.Connection = new anchor.web3.Connection(
 );
 
 export const BUCKET_PROGRAM_ID = new PublicKey(
-  "12VVjdoYJQeJMM1pE5a9LRrffHvJx5npkKMEwdD8SVGv"
+  // "12VVjdoYJQeJMM1pE5a9LRrffHvJx5npkKMEwdD8SVGv"
+  "77Yoj6SnQiMRRjvPXAvPn1kDjCL4Jn6qNAosdHjhHpBh"
 );
 
 export const SPL_PROGRAM_ID = new PublicKey(
@@ -21,7 +22,7 @@ export const SPL_PROGRAM_ID = new PublicKey(
 
 export const BUCKET_PROGRAM_IDL = idl;
 
-export const RESERVE_MINT = "8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF";
+export const RESERVE_MINT = "4abHEC2NLhMXtom4ZukpmZjcNEGqTL7EAWn25TbtCsay"; //"8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF";
 
 export const AUTHORIZED_COLLATERAL_TOKENS = [
   "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP",
@@ -56,4 +57,10 @@ export const mintToSymbol: { [key: string]: string } = {
   "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "USDT",
   HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "UST",
   FgfeF24bnbZdnM7ryv6pSK87Pc89VTgfqgDhV6GqvEKo: "BUCK",
+};
+
+export const mintToCoingeckoId: { [key: string]: string } = {
+  "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "usd-coin",
+  "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "tether",
+  HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "terrausd",
 };

@@ -245,7 +245,7 @@ const App = () => {
                 <hr className="lg:my-12" />
               </div>
 
-              <div className="text-center w-full mb-4 ">
+              <div className="text-center w-full mb-4 lg:mt-0 mt-4 ">
                 {bucketClient && (
                   <Faucet
                     bucketClient={bucketClient}

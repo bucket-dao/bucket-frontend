@@ -3,6 +3,7 @@ import { TokenListProvider } from "@solana/spl-token-registry";
 import {
   AUTHORIZED_COLLATERAL_TOKENS,
   connection,
+  mintToCoingeckoId,
   network,
   RESERVE_MINT,
   SPL_PROGRAM_ID,
@@ -92,4 +93,23 @@ export const stripTokenData = (tokenData: any) => {
     amount: tokenInfo.amount,
     decimals: tokenInfo.decimals,
   };
+};
+
+// COINGECKO - for temp UI purposes
+export const getCurrentPrice = async (address: string) => {
+  const id = mintToCoingeckoId[address];
+  if (id) {
+    try {
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`
+      );
+      const price = await res.json();
+      console.log(price[id].usd);
+      return price[id].usd;
+    } catch (e) {
+      console.log("coingecko error:", e);
+      return 1;
+    }
+  }
+  return 1;
 };
