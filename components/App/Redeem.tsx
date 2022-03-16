@@ -12,6 +12,7 @@ import {
   RESERVE_MINT_DECIMALS,
 } from "../../utils/constant";
 import { toast, ToastContainer } from "react-toastify";
+import { error, success } from "../../utils/toasts";
 
 type Props = {
   reserveToken: any;
@@ -23,35 +24,6 @@ type Props = {
 const Redeem = ({ reserveToken, wallet, bucketClient, refreshData }: Props) => {
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [loading, setLoading] = useState(false);
-  const success = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) =>
-    toast.success(msg, {
-      autoClose: 5000,
-      position: "bottom-left",
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  const error = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) => {
-    toast.error(msg, {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
 
   useEffect(() => {
     console.log(reserveToken);

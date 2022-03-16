@@ -10,6 +10,7 @@ import {
   FAUCET_KEYPAIR,
 } from "../../utils/constant";
 import { toast, ToastContainer } from "react-toastify";
+import { error, success } from "../../utils/toasts";
 
 type Props = {
   bucketClient: BucketClient;
@@ -21,36 +22,6 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
   const connection = useConnection();
   const [loading, setLoading] = useState(false);
   const [loadingMsg, setLoadingMsg] = useState("");
-
-  const success = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) =>
-    toast.success(msg, {
-      autoClose: 5000,
-      position: "bottom-left",
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-  const error = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) =>
-    toast.error(msg, {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   const getSol = async (
     walletPubKey: anchor.web3.PublicKey,

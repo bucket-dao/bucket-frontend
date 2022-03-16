@@ -26,6 +26,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
 import { getCurrentPrice } from "../../../utils/tokens";
+import { error, success } from "../../../utils/toasts";
 
 type Props = {
   collateralTokens: any[];
@@ -53,35 +54,6 @@ const Deposit = ({
   const [buckAmount, setBuckAmount] = useState("");
   const [loadingData, setLoadingData] = useState(false);
   const [loadingTxn, setLoadingTxn] = useState(false);
-  const success = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) =>
-    toast.success(msg, {
-      autoClose: 5000,
-      position: "bottom-left",
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  const error = (
-    msg:
-      | DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-      | string
-  ) => {
-    toast.error(msg, {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
 
   useEffect(() => {
     // update deposit amnt if above new max amnt
