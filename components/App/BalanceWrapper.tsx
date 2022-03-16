@@ -1,4 +1,4 @@
-import { mintToSymbol } from "../../utils/utils";
+import { mintToSymbol } from "../../utils/constant";
 import BlurImage from "../BlurImage";
 
 type Props = {
@@ -50,9 +50,7 @@ const BalanceWrapper = ({
               })}
             </div>
           ) : (
-            <div className="font-medium text-left">
-              None.
-            </div>
+            <div className="font-medium text-left">None.</div>
           )}
 
           <div className="mt-4">

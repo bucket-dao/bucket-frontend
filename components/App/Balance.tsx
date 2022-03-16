@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { stripTokenData } from "../../utils/tokens";
-import { mintToSymbol } from "../../utils/utils";
 import BlurImage from "../BlurImage";
 import BalanceWrapper from "./BalanceWrapper";
 

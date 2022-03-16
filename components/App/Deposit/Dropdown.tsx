@@ -2,7 +2,7 @@
 import { Dispatch, Fragment, SetStateAction, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import { mintToSymbol } from "../../../utils/utils";
+import { mintToSymbol } from "../../../utils/constant";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

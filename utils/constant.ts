@@ -12,23 +12,17 @@ export const connection: anchor.web3.Connection = new anchor.web3.Connection(
 );
 
 export const BUCKET_PROGRAM_ID = new PublicKey(
-  // "9tFeTGcc6saCgvZqQbqKq76vqgbJsoavjFiMDKRo7v9c"
-  // "7CXEmykaqZ6WZXEFuQg5rzG5RZcoo1yTVhev1tfVUUfJ"
   "12VVjdoYJQeJMM1pE5a9LRrffHvJx5npkKMEwdD8SVGv"
 );
 
 export const BUCKET_PROGRAM_IDL = idl;
 
-export const RESERVE_MINT = "8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF"; // "GKi9Tpj2AdEyrMo81AEFDKkLZ8pR7s6tt3Nky2Ua7XxS"; //"2XcPZAQ5TLxDXAyj29kbgh4h4pFBPTsEGbR5SQhnWHd9";
+export const RESERVE_MINT = "8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF";
 
 export const AUTHORIZED_COLLATERAL_TOKENS = [
   "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP",
   "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9",
   "HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn",
-  // "5AvivB7ArFKWbMTnhJjBSf1HsUMgrc2jSxRxtPTDWZcW", // 6 decimals
-  // "5UwadZgYM3U7ZTkrH5JcwR9WYuc52nw8dbhPLfRh2XQA", // 6 decimals
-  // "59bq58XRWsbvnmnJsUfmjuY3RpaJm4uW1Yzja1tCiqkF", // 6 decimals
-  // "3hWRzQqCn7dBPBLpANQ4EPAfR68EDpk2E7uvEMqa9o2K", // 9 decimals
 ];
 
 export const ORACLE_DEVNET: any = {
@@ -52,3 +46,10 @@ export const FAUCET_MINTS = [
   new PublicKey("8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9"), // USDT
   new PublicKey("HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn"), // UST
 ];
+
+export const mintToSymbol: { [key: string]: string } = {
+  "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "USDC",
+  "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "USDT",
+  HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "UST",
+  FgfeF24bnbZdnM7ryv6pSK87Pc89VTgfqgDhV6GqvEKo: "BUCK",
+};

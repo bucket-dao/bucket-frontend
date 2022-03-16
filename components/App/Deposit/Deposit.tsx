@@ -16,6 +16,7 @@ import {
 import {
   BUCKET_PROGRAM_ID,
   connection,
+  mintToSymbol,
   ORACLE_DEVNET,
   RESERVE_MINT,
 } from "../../../utils/constant";
@@ -24,7 +25,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
-import { mintToSymbol } from "../../../utils/utils";
 
 type Props = {
   collateralTokens: any[];
