@@ -77,9 +77,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
         await getSol(walletPubKey, conn);
       }
 
-      setLoadingMsg(
-        "Initiating Stablecoin faucets."
-      );
+      setLoadingMsg("Initiating Stablecoin faucets.");
 
       try {
         const recentBlockhash = await conn.getRecentBlockhash();
@@ -114,7 +112,9 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
 
         const signature = await wallet.sendTransaction(tx, conn);
         console.log(signature);
-        setLoadingMsg("Finalizing Transaction. Please wait, this may take a few seconds.");
+        setLoadingMsg(
+          "Finalizing Transaction. Please wait, this may take a few seconds."
+        );
 
         const txnConfirmed = await conn.confirmTransaction(
           signature,
@@ -166,7 +166,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
             className="bg-blue-500/80 hover:bg-blue-500 sticky p-2 rounded-lg mt-1  text-slate-100 text-center text-base md:text-xl font-normal"
             onClick={handleClick}
           >
-            Click here to automatically receive 10k USDC/USDT on devnet
+            Airdrop Stablecoins
           </button>
         </>
       )}

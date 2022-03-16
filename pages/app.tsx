@@ -22,6 +22,7 @@ import { generateCrateAddress } from "@crateprotocol/crate-sdk";
 import BalanceWrapper from "../components/App/BalanceWrapper";
 import FaucetDialog from "../components/App/FaucetDialog";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { shortenAddress } from "../utils/utils";
 enum ActionView {
   DEPOSIT,
   REDEEM,
@@ -167,6 +168,11 @@ const App = () => {
             <FadeInSection direction="right">
               {wallet && (
                 <div className="max-w-7xl mx-auto text-center md:text-right mt-4">
+                  {wallet.publicKey && (
+                    <span className="mr-4">
+                      {shortenAddress(wallet.publicKey.toBase58())}
+                    </span>
+                  )}
                   <button
                     className="px-8 cta--button rounded-lg py-2 border-black border"
                     onClick={handleDisconnect}
