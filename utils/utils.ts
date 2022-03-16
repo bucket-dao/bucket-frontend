@@ -9,6 +9,7 @@ export const shortenAddress = (address: string, chars = 4): string => {
 export const mintToSymbol: { [key: string]: string } = {
   "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "USDC",
   "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "USDT",
+  HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "UST",
 
   "5AvivB7ArFKWbMTnhJjBSf1HsUMgrc2jSxRxtPTDWZcW": "_USDC",
   "5UwadZgYM3U7ZTkrH5JcwR9WYuc52nw8dbhPLfRh2XQA": "_USDT",

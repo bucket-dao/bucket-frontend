@@ -12,10 +12,6 @@ function FaucetDialog({ refreshData, bucketClient }: Props) {
         {bucketClient ? (
           <>
             <Faucet bucketClient={bucketClient} refreshData={refreshData} />
-            <div className="mt-4">
-              Please make sure you own a little bit of devnet SOL to fund the
-              transaction.
-            </div>
           </>
         ) : (
           <div className="flex  pb-3 pt-3 justify-center items-center">

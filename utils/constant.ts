@@ -24,6 +24,7 @@ export const RESERVE_MINT = "8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF"; // "
 export const AUTHORIZED_COLLATERAL_TOKENS = [
   "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP",
   "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9",
+  "HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn",
   // "5AvivB7ArFKWbMTnhJjBSf1HsUMgrc2jSxRxtPTDWZcW", // 6 decimals
   // "5UwadZgYM3U7ZTkrH5JcwR9WYuc52nw8dbhPLfRh2XQA", // 6 decimals
   // "59bq58XRWsbvnmnJsUfmjuY3RpaJm4uW1Yzja1tCiqkF", // 6 decimals
@@ -47,4 +48,5 @@ export const FAUCET_AMOUNT = 10000 * 10 ** RESERVE_MINT_DECIMALS;
 export const FAUCET_MINTS = [
   new PublicKey("6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP"), // USDC
   new PublicKey("8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9"), // USDT
+  new PublicKey("HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn"), // UST
 ];

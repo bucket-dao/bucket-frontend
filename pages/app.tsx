@@ -21,6 +21,7 @@ import FadeInSection from "../components/FadeInSection";
 import { generateCrateAddress } from "@crateprotocol/crate-sdk";
 import BalanceWrapper from "../components/App/BalanceWrapper";
 import FaucetDialog from "../components/App/FaucetDialog";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 enum ActionView {
   DEPOSIT,
   REDEEM,
@@ -140,6 +141,14 @@ const App = () => {
       setCrateTokens(_crateTokens);
     }
   };
+
+  const handleDisconnect = () => {
+    if (wallet) {
+      wallet.disconnect().then(() => {
+        router.push("/");
+      });
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -155,11 +164,18 @@ const App = () => {
             </div>
           )}
           <>
-            <div className="text-center w-full mt-2">
-              {bucketClient && (
-                <Faucet bucketClient={bucketClient} refreshData={refreshData} />
+            <FadeInSection direction="right">
+              {wallet && (
+                <div className="max-w-7xl mx-auto text-center md:text-right mt-4">
+                  <button
+                    className="px-8 cta--button rounded-lg py-2 border-black border"
+                    onClick={handleDisconnect}
+                  >
+                    Disconnect
+                  </button>
+                </div>
               )}
-            </div>
+            </FadeInSection>
             <div className=" w-full mx-auto text-black">
               <FadeInSection direction="right">
                 <div className=" mx-auto grid grid-cols-12">
@@ -243,6 +259,15 @@ const App = () => {
 
               <div className="max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto md:p-0 p-4">
                 <hr className="lg:my-12" />
+              </div>
+
+              <div className="text-center w-full mb-4 ">
+                {bucketClient && (
+                  <Faucet
+                    bucketClient={bucketClient}
+                    refreshData={refreshData}
+                  />
+                )}
               </div>
 
               <div className="grid grid-cols-2 max-w-7xl mx-auto">

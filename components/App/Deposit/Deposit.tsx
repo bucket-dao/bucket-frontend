@@ -214,7 +214,9 @@ const Deposit = ({
             <div className="p-3">🪣 BUCK</div>
             <div className="col-span-2  rounded-lg">
               <div className="p-3 bg-transparent text-xl font-bold outline-none text-right w-full">
-                {depositAmount ? depositAmount : 0}
+                {depositAmount
+                  ? (Math.floor(+depositAmount * 100) / 100).toString()
+                  : 0}
               </div>
             </div>
           </div>

@@ -328,11 +328,11 @@ $amount: 20;
 // BUTTON
 
 .cta--button {
-  background: rgba(0, 0, 0, 0)
-    linear-gradient(270deg, rgb(171, 102, 255) 0%, rgb(20, 241, 149) 101.39%)
-    repeat scroll 0% 0%;
-  -webkit-transition: all 1000ms ease;
-  transition: all 1000ms ease;
+  // background: rgba(0, 0, 0, 0)
+  //   linear-gradient(270deg, rgb(171, 102, 255) 0%, rgb(20, 241, 149) 101.39%)
+  //   repeat scroll 0% 0%;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
   cursor: pointer;
 }
 
@@ -340,6 +340,10 @@ $amount: 20;
   -webkit-transform: translate(0px, -0.2em);
   -ms-transform: translate(0px, -0.2em);
   transform: translate(0px, -0.2em);
+  background: rgba(0, 0, 0, 0)
+    linear-gradient(270deg, rgb(171, 102, 255) 0%, rgb(20, 241, 149) 101.39%)
+    repeat scroll 0% 0%;
+  color: white;
 
   span {
     background-color: transparent;

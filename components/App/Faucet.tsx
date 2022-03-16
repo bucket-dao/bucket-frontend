@@ -20,6 +20,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
   const wallet = useWallet();
   const connection = useConnection();
   const [loading, setLoading] = useState(false);
+  const [loadingMsg, setLoadingMsg] = useState("");
 
   const success = (
     msg:
@@ -63,7 +64,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
   };
   const handleClick = async () => {
     if (wallet && wallet.publicKey && !loading) {
-      console.log("hello");
+      setLoadingMsg("Initiating Faucet.");
 
       setLoading(true);
       const walletPubKey = wallet.publicKey;
@@ -72,12 +73,13 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       const bal = await conn.getBalance(walletPubKey);
       console.log("balance:", bal);
       if (bal == 0) {
-        console.log("airdropping sol");
-        const getSolConfirmation = await getSol(walletPubKey, conn);
-        console.log(getSolConfirmation);
-      } else {
-        console.log("sufficient sol funds");
+        setLoadingMsg("Airdropping Sol.");
+        await getSol(walletPubKey, conn);
       }
+
+      setLoadingMsg(
+        "Initiating Stablecoin faucets."
+      );
 
       try {
         const recentBlockhash = await conn.getRecentBlockhash();
@@ -112,6 +114,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
 
         const signature = await wallet.sendTransaction(tx, conn);
         console.log(signature);
+        setLoadingMsg("Finalizing Transaction. Please wait, this may take a few seconds.");
 
         const txnConfirmed = await conn.confirmTransaction(
           signature,
@@ -140,6 +143,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
         error("Ooops, something went wrong.");
       } finally {
         setLoading(false);
+        setLoadingMsg("");
       }
     } else {
       error("Ooops, something went wrong.");
@@ -151,7 +155,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
   return (
     <div>
       {loading ? (
-        <div className="loading">
+        <div className="loading mt-4">
           <div></div>
           <div></div>
           <div></div>
@@ -166,6 +170,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
           </button>
         </>
       )}
+      {loadingMsg && <div className="mt-4">{loadingMsg}</div>}
       <ToastContainer />
     </div>
   );

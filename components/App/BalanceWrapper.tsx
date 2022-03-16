@@ -51,13 +51,15 @@ const BalanceWrapper = ({
             </div>
           ) : (
             <div className="font-medium">
-              you don{"'"}t own any accepted stablecoins
+              None.
             </div>
           )}
 
           <div className="mt-4">
             {bucket ? (
-              <div className="text-xl text-left font-bold mb-4">Total Supply</div>
+              <div className="text-xl text-left font-bold mb-4">
+                Total Supply
+              </div>
             ) : (
               <div className="text-xl text-left font-bold mb-4">Bucket</div>
             )}
@@ -76,9 +78,7 @@ const BalanceWrapper = ({
                 </div>
               </div>
             ) : (
-              <div className="font-medium">
-                you don{"'"}t own any Bucket USD
-              </div>
+              <div className="font-medium text-left">None.</div>
             )}
           </div>
         </div>
