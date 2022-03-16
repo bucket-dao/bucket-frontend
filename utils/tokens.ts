@@ -49,7 +49,7 @@ export const getAuthorizedTokens = async (
 // returns authorized token & reserve mint data of a given wallet
 export const getRelevantTokenData = async (wallet: any) => {
   const tokens = await getAuthorizedTokens(
-    wallet.publicKey.toBase58(),
+    wallet.publicKey,
     AUTHORIZED_COLLATERAL_TOKENS
   );
 
@@ -68,7 +68,7 @@ export const getRelevantTokenData = async (wallet: any) => {
             decimals: 1,
           };
   }
-  const reserveToken = await getAuthorizedTokens(wallet.publicKey.toBase58(), [
+  const reserveToken = await getAuthorizedTokens(wallet.publicKey, [
     RESERVE_MINT,
   ]);
   return {

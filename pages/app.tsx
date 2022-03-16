@@ -73,27 +73,7 @@ const App = () => {
         setLoading(true);
         setBucketClient(client);
 
-        const {
-          collateralTokens: _collateralTokens,
-          currentCollateralToken: defaultCollateralToken,
-          currentMaxAmount: _currentMaxAmount,
-          reserveToken: _reserveToken,
-        } = await getRelevantTokenData(wallet);
-        console.log(_currentMaxAmount);
-
-        // @ts-ignore // TODO
-        setCollateralTokens(_collateralTokens);
-        setDefaultCollateralToken(defaultCollateralToken);
-        // @ts-ignore // TODO
-        setCurrentMaxAmount(_currentMaxAmount);
-        // @ts-ignore // TODO
-        setReserveToken(_reserveToken);
-        updateBucketStats();
-
-        if (_collateralTokens.length > 0) {
-          // TODO: fix -> currently will also treat you as new user if you own bucket but no collateral
-          setNewUser(false);
-        }
+        await refreshData();
         setLoading(false);
       }
     });
@@ -118,8 +98,10 @@ const App = () => {
     setReserveToken(_reserveToken);
     updateBucketStats();
     if (_collateralTokens.length > 0) {
+      // TODO: fix -> currently will also treat you as new user if you own bucket but no collateral
       setNewUser(false);
     }
+    return;
   };
 
   const updateBucketStats = async () => {
