@@ -22,7 +22,7 @@ const Stablecoins = () => {
       <div className="bg-white blur-box w-full bg-opacity-60 backdrop-filter backdrop-blur-lg py-4 border-y-[1px] border-slate-200 hover:border-black ease-in-out duration-500 mt-8">
         <ul className="coin--scroll--container flex flex-row overflow-x-auto flex-nowrap">
           {coins.map((coin, idx) => (
-            <li key={idx} className="mx-6">
+            <li key={idx} className="mx-5 min-w-[150px] first:ml-0">
               <div className="coin--image--wrapper">
                 <BlurImage
                   src={coin.src}
@@ -47,7 +47,7 @@ const coins = [
   {
     src: "/coins/usdc.svg",
     symbol: "USDC",
-    name: "USD Coin",
+    name: "USDC",
   },
   {
     src: "/coins/usdt.svg",
@@ -55,64 +55,74 @@ const coins = [
     name: "USD Tether",
   },
   {
-    src: "/coins/ust.svg",
-    symbol: "UST",
-    name: "TerraUSD (Wormhole)",
-  },
-  {
     src: "/coins/uxd.svg",
     symbol: "UXD",
     name: "UXD",
   },
   {
+    src: "/coins/cashio.png",
+    symbol: "CASH",
+    name: "CASHIO",
+  },
+  {
+    src: "/coins/hubble.svg",
+    symbol: "USDH",
+    name: "Hubble",
+  },
+  {
+    src: "/coins/ust.svg",
+    symbol: "UST",
+    name: "Wormhole - Terra",
+  },
+  {
     src: "/coins/usdc.svg",
     symbol: "apUSDC",
-    name: "USDC (Allbridge - Polygon)",
+    name: "Allbridge - Polygon",
   },
   {
     src: "/coins/usdc.svg",
     symbol: "aeUSDC",
-    name: "USDC (Allbridge - Ethereum)",
+    name: "Allbridge - Ethereum",
   },
   {
     src: "/coins/usdc.svg",
     symbol: "aaUSDC",
-    name: "USDC (Allbridge - Avalanche)",
+    name: "Allbridge - Avalanche",
   },
   {
     src: "/coins/usdc.svg",
     symbol: "acUSDC",
-    name: "USDC (Allbridge - Celo)",
+    name: "Allbridge - Celo",
   },
   {
     src: "/coins/usdc.svg",
     symbol: "afUSDC",
-    name: "USDC (Allbridge - Fantom)",
+    name: "Allbridge - Fantom",
   },
   {
     src: "/coins/usdt.svg",
     symbol: "apUSDT",
-    name: "USD Tether (Allbridge - Polygon)",
+    name: "Allbridge - Polygon",
   },
   {
     src: "/coins/usdt.svg",
     symbol: "aaUSDT",
-    name: "USD Tether (Allbridge - Avalanche)",
+    name: "Allbridge - Avalanche",
   },
   {
     src: "/coins/usdt.svg",
     symbol: "aeUSDT",
-    name: "USD Tether (Allbridge - Ethereum)",
+    name: "Allbridge - Ethereum",
   },
   {
     src: "/coins/usdt.svg",
     symbol: "ahUSDT",
-    name: "USD Tether (Allbridge - HECO)",
+    name: "Allbridge - HECO",
   },
   {
     src: "/coins/ust.svg",
     symbol: "atUST",
-    name: "UST (Allbridge - Terra)",
+    name: "Allbridge - Terra",
   },
 ];
 

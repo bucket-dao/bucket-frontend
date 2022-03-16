@@ -15,7 +15,7 @@ const Partners = () => {
           </h1>
 
           <p className="relative mt-2 text-lg md:text-3xl font-medium text-slate-500">
-            Optimized for comosability. Built on industry leading, open-source
+            Optimized for composability. Built on industry leading, open-source
             software.
           </p>
 
