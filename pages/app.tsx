@@ -87,7 +87,6 @@ const App = () => {
       currentMaxAmount: _currentMaxAmount,
       reserveToken: _reserveToken,
     } = await getRelevantTokenData(wallet);
-    console.log(_currentMaxAmount);
 
     // @ts-ignore // TODO
     setCollateralTokens(_collateralTokens);
@@ -115,7 +114,6 @@ const App = () => {
       pubkey: anchor.web3.PublicKey;
       account: anchor.web3.AccountInfo<anchor.web3.ParsedAccountData>;
     }[] = await getAuthorizedTokens(crate, AUTHORIZED_COLLATERAL_TOKENS);
-    console.log("crate tokens:", _crateTokens);
     if (_crateTokens) {
       setCrateTokens(_crateTokens);
     }

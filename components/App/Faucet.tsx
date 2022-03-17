@@ -41,9 +41,8 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       setLoading(true);
       const walletPubKey = wallet.publicKey;
       const conn = connection.connection;
-
       const bal = await conn.getBalance(walletPubKey);
-      console.log("balance:", bal);
+      
       if (bal == 0) {
         setLoadingMsg("Airdropping Sol.");
         await getSol(walletPubKey, conn);
@@ -57,7 +56,6 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
           recentBlockhash: recentBlockhash.blockhash,
           feePayer: walletPubKey,
         });
-        console.log(tx);
 
         for (const tokenMint of FAUCET_MINTS) {
           const tokenATA = await bucketClient.getOrCreateATA(
@@ -80,10 +78,7 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
           fundTransactions.forEach((ixn) => tx.add(ixn));
         }
         tx.partialSign(FAUCET_KEYPAIR);
-        console.log(tx);
-
         const signature = await wallet.sendTransaction(tx, conn);
-        console.log(signature);
         setLoadingMsg(
           "Finalizing Transaction. Please wait, this may take a few seconds."
         );
@@ -94,12 +89,10 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
         );
 
         if (!txnConfirmed.value.err) {
-          console.log("txnConfirmed:", txnConfirmed);
           success(<SuccessfulTxn txn={signature} />);
           await refreshData();
         }
       } catch (e: any) {
-        console.log("Faucet Error:", e);
         error("Ooops, something went wrong.");
       } finally {
         setLoading(false);
@@ -107,8 +100,6 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       }
     } else {
       error("Ooops, something went wrong.");
-      console.log("Ooops, something went wrong.");
-      console.log(wallet);
     }
   };
 

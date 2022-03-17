@@ -129,15 +129,10 @@ const Deposit = ({
             setLoadingTxn(false);
           }
         } catch (e: any) {
-          console.log("Deposit Error:", e.message);
           error("Ooops, something went wrong.");
           setLoadingTxn(false);
         }
       } else {
-        console.log(
-          "Deposit Error:",
-          "Could not find or generate issueAuthority"
-        );
         error("Ooops, something went wrong.");
         setLoadingTxn(false);
       }

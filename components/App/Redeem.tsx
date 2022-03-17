@@ -26,10 +26,6 @@ const Redeem = ({ reserveToken, wallet, bucketClient, refreshData }: Props) => {
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    console.log(reserveToken);
-  }, [reserveToken]);
-
   const handleWithdrawAmountUpdate = (amnt: string) => {
     const tokenAmount = reserveToken.account.data.parsed.info.tokenAmount;
     const maxAmount = +tokenAmount.amount / 10 ** tokenAmount.decimals;
@@ -55,7 +51,6 @@ const Redeem = ({ reserveToken, wallet, bucketClient, refreshData }: Props) => {
       const { addr: bucket } = await bucketClient.generateBucketAddress(crate);
       const { collateral } = await bucketClient.fetchBucket(bucket);
       const _collaterals = collateral.map((el: any) => el.mint);
-      console.log(">", _collaterals);
 
       const _withdrawAmount = +withdrawAmount * 10 ** RESERVE_MINT_DECIMALS;
       const amountU64 = new u64(_withdrawAmount);
@@ -72,25 +67,21 @@ const Redeem = ({ reserveToken, wallet, bucketClient, refreshData }: Props) => {
             withdrawAuthority,
             wallet.publicKey
           );
-          console.log("withdraw response", res);
+
           const txnConfirmed = await connection.confirmTransaction(res);
           if (txnConfirmed.value.err) {
-            console.log("txnConfirmed:", txnConfirmed);
             error("Ooops, something went wrong.");
             setLoading(false);
           } else {
-            console.log("txnConfirmed:", txnConfirmed);
             success(<SuccessfulTxn txn={res} />);
             await refreshData();
             setLoading(false);
           }
         } catch (e: any) {
-          console.log("Withdraw Error:", e.message);
           error("Ooops, something went wrong.");
           setLoading(false);
         }
       } else {
-        console.log("Withdraw Error");
         error("Ooops, something went wrong.");
         setLoading(false);
       }

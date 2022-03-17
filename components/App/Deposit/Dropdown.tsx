@@ -25,10 +25,7 @@ export default function Dropdown({
     mint: string,
     tokenAmount: { amount: string; decimals: number }
   ) => {
-    console.log("updating");
     const _tokenAmount = { ...tokenAmount };
-    console.log(_tokenAmount);
-
     setCollateralMint(mint);
     setCurrentMaxAmount(_tokenAmount);
   };

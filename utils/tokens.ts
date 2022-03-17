@@ -104,10 +104,8 @@ export const getCurrentPrice = async (address: string) => {
         `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`
       );
       const price = await res.json();
-      console.log(price[id].usd);
       return price[id].usd;
     } catch (e) {
-      console.log("coingecko error:", e);
       return 1;
     }
   }

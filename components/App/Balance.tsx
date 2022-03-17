@@ -11,11 +11,9 @@ type Props = {
 const Balance = ({ collateralTokens, reserveToken }: Props) => {
   const [reserveAmount, setReserveAmount] = useState(0);
   useEffect(() => {
-    console.log(reserveToken);
-
     const init = async () => {
-      const tst = await stripTokenData(reserveToken[0]);
-      setReserveAmount(+tst.amount / 10 ** tst.decimals);
+      const reserve = await stripTokenData(reserveToken[0]);
+      setReserveAmount(+reserve.amount / 10 ** reserve.decimals);
     };
     if (reserveToken.length > 0) {
       init();
