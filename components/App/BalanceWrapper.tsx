@@ -17,7 +17,9 @@ const BalanceWrapper = ({
   return (
     <div>
       <div className="mx-auto rounded-lg  mt-4  w-full text-center max-w-lg">
-        <div className="text-2xl  rounded-t-lg border-black font-bold p-4 ">{title}</div>
+        <div className="text-2xl  rounded-t-lg border-black font-bold p-4 ">
+          {title}
+        </div>
         <div className="mx-auto ">
           {collateral.length > 0 ? (
             <div className="font-medium">
@@ -59,7 +61,9 @@ const BalanceWrapper = ({
                 Total Supply
               </div>
             ) : (
-              <div className="text-xl text-left font-bold pb-2 px-4">Bucket</div>
+              <div className="text-xl text-left font-bold pb-2 px-4">
+                Bucket
+              </div>
             )}
             {reserveAmount && reserveAmount > 0 ? (
               <div className="font-medium p-4 border-t">

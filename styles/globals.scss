@@ -383,6 +383,36 @@ $amount: 20;
   cursor: pointer;
 }
 
+.wallet-adapter-button--secondary
+  .wallet-adapter-button--main
+  .wallet-adapter-button {
+  font-family: "Poppins", sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif !important;
+  // background-color: white !important;
+  // border: solid 1px black !important;
+  color: black !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center !important;
+  font-size: 18px !important;
+  font-weight: 600;
+  height: 60px !important;
+  line-height: 20px !important;
+
+  border-radius: 0.5rem;
+  text-align: center;
+  padding-left: 0.25rem /* 4px */ !important;
+  padding-right: 0.25rem /* 4px */ !important;
+  padding-top: 1rem /* 16px */ !important;
+  padding-bottom: 1rem /* 16px */ !important;
+
+  background: black !important;
+  -webkit-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+  cursor: pointer;
+}
+
 .wallet-adapter-button:hover {
   -webkit-transform: translate(0px, -0.2em);
   -ms-transform: translate(0px, -0.2em);
