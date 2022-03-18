@@ -23,7 +23,7 @@ const Stablecoins = () => {
       <div className="w-full mt-8">
         <div className="swipe--for--more--cta block sm:hidden -mt-6 text-gray-400 flex float-right">
           <span>Swipe</span>
-          <ChevronRightIcon className="w-5 mt-1" aria-hidden="true" />
+          <ChevronRightIcon className="w-5 mt-1" />
         </div>
         <div className="bg-white blur-box w-full bg-opacity-60 backdrop-filter backdrop-blur-lg py-4 border-y-[1px] border-slate-200 hover:border-black ease-in-out duration-500">
           <ul className="coin--scroll--container flex flex-row overflow-x-auto flex-nowrap">

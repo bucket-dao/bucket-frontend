@@ -83,6 +83,12 @@ const partnerInfo = [
     name: "Crate",
     description: "Crate is the standard for tokenized baskets on Solana.",
   },
+  {
+    src: "/assets/augmentedLogos/switchboard.svg",
+    name: "Switchboard",
+    description:
+      "Switchboard is a generalized, community-curated oracle network designed to incentivize bringing the long tail of data on-chain.",
+  },
 ];
 
 export default Partners;
