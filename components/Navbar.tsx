@@ -61,7 +61,7 @@ const links = [
   },
   {
     name: "Litepaper",
-    url: "#",
+    url: "https://docs.google.com/document/d/1_GOjncQYXdtBtDilnhC1_wZllG9nEKJgOS7xX4IV2H4/",
   },
 ];
 
