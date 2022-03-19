@@ -4,16 +4,13 @@ import { Keypair } from "@solana/web3.js";
 
 import idl from "../types/bucket_program.json";
 
-import * as faucetKeypair from "../public/keypairs/faucet.json";
-
 export const network = "devnet";
 export const connection: anchor.web3.Connection = new anchor.web3.Connection(
   "https://api.devnet.solana.com"
 );
 
 export const BUCKET_PROGRAM_ID = new PublicKey(
-  // "12VVjdoYJQeJMM1pE5a9LRrffHvJx5npkKMEwdD8SVGv"
-  "77Yoj6SnQiMRRjvPXAvPn1kDjCL4Jn6qNAosdHjhHpBh"
+  "4dje1Gy1CLWUiQ9ks9cfgTb7pWtNWkgy3nKFvJTapyrE"
 );
 
 export const SPL_PROGRAM_ID = new PublicKey(
@@ -22,12 +19,12 @@ export const SPL_PROGRAM_ID = new PublicKey(
 
 export const BUCKET_PROGRAM_IDL = idl;
 
-export const RESERVE_MINT = "4abHEC2NLhMXtom4ZukpmZjcNEGqTL7EAWn25TbtCsay"; //"8ddxBg81H6LyXjPWvynrNRVLRatRtrPdrrpFa6cUtJDF";
+export const RESERVE_MINT = "Cn6wiFrahgTceo1gYFAJFS9RCcgTTqLGG3W7EGRTJAch";
 
 export const AUTHORIZED_COLLATERAL_TOKENS = [
-  "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP",
-  "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9",
-  "HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn",
+  "5nxcyH9EzXhjFNCvGTttexZvUqjUqXM2xXgPoQ3A6s8S",
+  "2ZK1nEDSaRNb117TtFupUBZTr7R8NoYtRouwQzGg12MQ",
+  "J7dri6QF3L5h5UXPGao6pR2KaHhnNNnNtAA5PJ7GS37H",
 ];
 
 export const ORACLE_DEVNET: any = {
@@ -37,30 +34,38 @@ export const ORACLE_DEVNET: any = {
 };
 
 export const RESERVE_MINT_DECIMALS = 6;
+export const FAUCET_DECIMALS = 6;
 
-export const FAUCET_KEYPAIR = Keypair.fromSecretKey(
-  Uint8Array.from(faucetKeypair)
-);
+let _FAUCET_KEYPAIR;
+const privateKey = process.env.NEXT_PUBLIC_PK;
+
+if (privateKey) {
+  _FAUCET_KEYPAIR = Keypair.fromSecretKey(
+    new Uint8Array(JSON.parse(privateKey))
+  );
+}
+
+export const FAUCET_KEYPAIR = _FAUCET_KEYPAIR;
 
 // 10k
-export const FAUCET_AMOUNT = 10000 * 10 ** RESERVE_MINT_DECIMALS;
+export const FAUCET_AMOUNT = 10000 * 10 ** FAUCET_DECIMALS;
 
 // Add public keys of token mints to allow faucet to drop `FAUCET_AMOUNT` of each
 export const FAUCET_MINTS = [
-  new PublicKey("6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP"), // USDC
-  new PublicKey("8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9"), // USDT
-  new PublicKey("HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn"), // UST
+  new PublicKey("5nxcyH9EzXhjFNCvGTttexZvUqjUqXM2xXgPoQ3A6s8S"), // USDC
+  new PublicKey("2ZK1nEDSaRNb117TtFupUBZTr7R8NoYtRouwQzGg12MQ"), // USDT
+  new PublicKey("J7dri6QF3L5h5UXPGao6pR2KaHhnNNnNtAA5PJ7GS37H"), // UST
 ];
 
 export const mintToSymbol: { [key: string]: string } = {
-  "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "USDC",
-  "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "USDT",
-  HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "UST",
+  "5nxcyH9EzXhjFNCvGTttexZvUqjUqXM2xXgPoQ3A6s8S": "USDC",
+  "2ZK1nEDSaRNb117TtFupUBZTr7R8NoYtRouwQzGg12MQ": "USDT",
+  J7dri6QF3L5h5UXPGao6pR2KaHhnNNnNtAA5PJ7GS37H: "UST",
   FgfeF24bnbZdnM7ryv6pSK87Pc89VTgfqgDhV6GqvEKo: "BUCK",
 };
 
 export const mintToCoingeckoId: { [key: string]: string } = {
-  "6NAzRAyde4ZzHd2QN5z36zP4DdYEn2yBwbs5NorspfBP": "usd-coin",
-  "8qD3sZ2RKiB67L88fT5HBJYd9EGVhveMFjhp7zPWahd9": "tether",
-  HySCn27tQCg62THSyxTHZ5soRCg5dbn8KeJmVqCPsddn: "terrausd",
+  "5nxcyH9EzXhjFNCvGTttexZvUqjUqXM2xXgPoQ3A6s8S": "usd-coin",
+  "2ZK1nEDSaRNb117TtFupUBZTr7R8NoYtRouwQzGg12MQ": "tether",
+  J7dri6QF3L5h5UXPGao6pR2KaHhnNNnNtAA5PJ7GS37H: "terrausd",
 };
