@@ -42,61 +42,62 @@ const Faucet = ({ bucketClient, refreshData }: Props) => {
       const walletPubKey = wallet.publicKey;
       const conn = connection.connection;
       const bal = await conn.getBalance(walletPubKey);
-      
+
       if (bal == 0) {
         setLoadingMsg("Airdropping Sol.");
         await getSol(walletPubKey, conn);
       }
 
       setLoadingMsg("Initiating Stablecoin faucets.");
+      if (FAUCET_KEYPAIR) {
+        try {
+          const recentBlockhash = await conn.getRecentBlockhash();
+          const tx = new Transaction({
+            recentBlockhash: recentBlockhash.blockhash,
+            feePayer: walletPubKey,
+          });
 
-      try {
-        const recentBlockhash = await conn.getRecentBlockhash();
-        const tx = new Transaction({
-          recentBlockhash: recentBlockhash.blockhash,
-          feePayer: walletPubKey,
-        });
-
-        for (const tokenMint of FAUCET_MINTS) {
-          const tokenATA = await bucketClient.getOrCreateATA(
-            tokenMint,
-            walletPubKey,
-            walletPubKey,
-            conn
-          );
-          const fundTransactions = [
-            ...(tokenATA.instruction ? [tokenATA.instruction] : []),
-            Token.createMintToInstruction(
-              TOKEN_PROGRAM_ID,
+          for (const tokenMint of FAUCET_MINTS) {
+            const tokenATA = await bucketClient.getOrCreateATA(
               tokenMint,
-              tokenATA.address,
-              FAUCET_KEYPAIR.publicKey,
-              [FAUCET_KEYPAIR],
-              new u64(FAUCET_AMOUNT)
-            ),
-          ];
-          fundTransactions.forEach((ixn) => tx.add(ixn));
-        }
-        tx.partialSign(FAUCET_KEYPAIR);
-        const signature = await wallet.sendTransaction(tx, conn);
-        setLoadingMsg(
-          "Finalizing Transaction. Please wait, this may take a few seconds."
-        );
+              walletPubKey,
+              walletPubKey,
+              conn
+            );
+            const fundTransactions = [
+              ...(tokenATA.instruction ? [tokenATA.instruction] : []),
+              Token.createMintToInstruction(
+                TOKEN_PROGRAM_ID,
+                tokenMint,
+                tokenATA.address,
+                FAUCET_KEYPAIR.publicKey,
+                [FAUCET_KEYPAIR],
+                new u64(FAUCET_AMOUNT)
+              ),
+            ];
+            fundTransactions.forEach((ixn) => tx.add(ixn));
+          }
+          tx.partialSign(FAUCET_KEYPAIR);
+          const signature = await wallet.sendTransaction(tx, conn);
+          setLoadingMsg(
+            "Finalizing Transaction. Please wait, this may take a few seconds."
+          );
 
-        const txnConfirmed = await conn.confirmTransaction(
-          signature,
-          "finalized"
-        );
+          const txnConfirmed = await conn.confirmTransaction(
+            signature,
+            "finalized"
+          );
 
-        if (!txnConfirmed.value.err) {
-          success(<SuccessfulTxn txn={signature} />);
-          await refreshData();
+          if (!txnConfirmed.value.err) {
+            success(<SuccessfulTxn txn={signature} />);
+            await refreshData();
+          }
+        } catch (e: any) {
+          error("Ooops, something went wrong.");
+        } finally {
+          setLoading(false);
+          setLoadingMsg("");
         }
-      } catch (e: any) {
-        error("Ooops, something went wrong.");
-      } finally {
-        setLoading(false);
-        setLoadingMsg("");
       }
     } else {
       error("Ooops, something went wrong.");
