@@ -613,10 +613,10 @@ $amount: 20;
 
 .swipe--for--more--cta {
   position: relative;
-  animation: MoveUpDown-5 2s infinite;
+  animation: swipeaction 2s infinite;
 }
 
-@keyframes MoveUpDown-5 {
+@keyframes swipeaction {
   0%,
   100% {
     transform: translateY(-10%);
