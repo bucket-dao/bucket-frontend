@@ -35,7 +35,7 @@ const Sections = [
       {
         pre: "",
         color: { color: "text-purple-500", text: "UTILITY" },
-        post: "ACROSS THE ",
+        post: " ACROSS THE ",
       },
       {
         pre: "ECOSYSTEM",
