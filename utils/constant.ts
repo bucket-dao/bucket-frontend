@@ -69,3 +69,19 @@ export const mintToCoingeckoId: { [key: string]: string } = {
   "2ZK1nEDSaRNb117TtFupUBZTr7R8NoYtRouwQzGg12MQ": "tether",
   J7dri6QF3L5h5UXPGao6pR2KaHhnNNnNtAA5PJ7GS37H: "terrausd",
 };
+
+
+export const links = [
+  {
+    name: "Twitter",
+    url: "https://twitter.com/bucket_sol",
+  },
+  {
+    name: "Github",
+    url: "https://github.com/orgs/bucket-dao",
+  },
+  {
+    name: "Litepaper",
+    url: "https://docs.google.com/document/d/1_GOjncQYXdtBtDilnhC1_wZllG9nEKJgOS7xX4IV2H4/",
+  },
+];

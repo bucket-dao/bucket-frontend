@@ -1,6 +1,7 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
+import { links } from "../utils/constant";
 
 type MobileNavProps = {
   open: boolean;
@@ -154,19 +155,6 @@ const Navbar = () => {
   );
 };
 
-const links = [
-  {
-    name: "Twitter",
-    url: "https://twitter.com/bucket_sol",
-  },
-  {
-    name: "Github",
-    url: "https://github.com/orgs/bucket-dao",
-  },
-  {
-    name: "Litepaper",
-    url: "https://docs.google.com/document/d/1_GOjncQYXdtBtDilnhC1_wZllG9nEKJgOS7xX4IV2H4/",
-  },
-];
+
 
 export default Navbar;

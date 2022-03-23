@@ -1,4 +1,5 @@
 import * as anchor from "@project-serum/anchor";
+import Head from "next/head";
 import { BucketClient } from "@bucket-program/sdk";
 import { SignerWalletAdapter } from "@solana/wallet-adapter-base";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -128,6 +129,11 @@ const App = () => {
   };
   return (
     <div>
+      <Head>
+        <title>Bucket</title>
+        <meta name="description" content="Bucket Stablecoin" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar />
 
       {!loading ? (

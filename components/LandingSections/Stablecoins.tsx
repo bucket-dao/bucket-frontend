@@ -21,7 +21,7 @@ const Stablecoins = () => {
       </FadeInSection>
 
       <div className="w-full mt-8">
-        <div className="swipe--for--more--cta block sm:hidden -mt-6 text-gray-400 flex float-right">
+        <div className="swipe--for--more--cta sm:hidden -mt-6 text-gray-400 flex float-right">
           <span>Swipe</span>
           <ChevronRightIcon className="w-5 mt-1" />
         </div>
@@ -67,11 +67,6 @@ const coins = [
     src: "/coins/uxd.svg",
     symbol: "UXD",
     name: "UXD",
-  },
-  {
-    src: "/coins/cashio.png",
-    symbol: "CASH",
-    name: "CASHIO",
   },
   {
     src: "/coins/hubble.svg",
